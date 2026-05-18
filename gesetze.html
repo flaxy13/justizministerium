@@ -3,9 +3,112 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gesetze & Regelwerke – Justizministerium San Andreas</title>
+  <title>Gesetze & Regelwerke – Justizministerium Berlin</title>
   <link rel="stylesheet" href="style.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .law-section { margin-bottom: 3rem; }
+    .law-section-header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      color: #fff;
+      padding: 1.5rem 2rem;
+      border-radius: 8px 8px 0 0;
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+    .law-section-header .law-abbr {
+      font-family: 'Playfair Display', serif;
+      font-size: 2rem;
+      font-weight: 700;
+      color: var(--gold);
+      min-width: 80px;
+    }
+    .law-section-header .law-title-block .law-full-name {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin: 0;
+    }
+    .law-section-header .law-title-block .law-desc {
+      font-size: 0.875rem;
+      opacity: 0.8;
+      margin: 0;
+    }
+    .law-body {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 8px 8px;
+      padding: 0;
+    }
+    .law-accordion-item {
+      border-bottom: 1px solid var(--border);
+    }
+    .law-accordion-item:last-child { border-bottom: none; }
+    .law-accordion-btn {
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 1rem 1.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      cursor: pointer;
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--text);
+      text-align: left;
+      transition: background 0.2s;
+    }
+    .law-accordion-btn:hover { background: rgba(200,168,75,0.08); }
+    .law-accordion-btn .icon { transition: transform 0.3s; color: var(--gold); }
+    .law-accordion-btn.active .icon { transform: rotate(180deg); }
+    .law-accordion-content {
+      display: none;
+      padding: 1rem 1.5rem 1.5rem;
+      background: rgba(10,30,53,0.3);
+    }
+    .law-accordion-content.open { display: block; }
+    .para-block { margin-bottom: 1.25rem; }
+    .para-block h4 { color: var(--gold); margin-bottom: 0.4rem; font-size: 0.95rem; }
+    .para-block p, .para-block li { color: var(--text-muted); font-size: 0.9rem; line-height: 1.7; }
+    .para-block ul, .para-block ol { padding-left: 1.5rem; margin: 0.4rem 0; }
+    .busseld-table { width: 100%; border-collapse: collapse; font-size: 0.875rem; }
+    .busseld-table th {
+      background: var(--primary);
+      color: var(--gold);
+      padding: 0.6rem 0.8rem;
+      text-align: left;
+      font-weight: 600;
+    }
+    .busseld-table td {
+      padding: 0.55rem 0.8rem;
+      border-bottom: 1px solid var(--border);
+      color: var(--text-muted);
+    }
+    .busseld-table tr:hover td { background: rgba(200,168,75,0.05); }
+    .busseld-table .amount { color: var(--gold); font-weight: 600; white-space: nowrap; }
+    .law-notice {
+      background: rgba(200,168,75,0.1);
+      border-left: 4px solid var(--gold);
+      padding: 1rem 1.25rem;
+      border-radius: 0 6px 6px 0;
+      margin-bottom: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-muted);
+    }
+    .section-badge {
+      display: inline-block;
+      background: var(--gold);
+      color: var(--primary-dark);
+      font-size: 0.7rem;
+      font-weight: 700;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+  </style>
 </head>
 <body>
 
@@ -16,13 +119,13 @@
       <div class="logo-icon">⚖</div>
       <div class="logo-text">
         <span class="logo-title">Justizministerium</span>
-        <span class="logo-sub">Staat San Andreas</span>
+        <span class="logo-sub">Staat Berlin</span>
       </div>
     </a>
     <nav class="nav">
       <a href="index.html"            class="nav-link"><i class="fa fa-house"></i> Startseite</a>
       <a href="ueber-uns.html"        class="nav-link"><i class="fa fa-landmark"></i> Über uns</a>
-      <a href="gesetze.html"          class="nav-link"><i class="fa fa-book"></i> Gesetze</a>
+      <a href="gesetze.html"          class="nav-link active"><i class="fa fa-book"></i> Gesetze</a>
       <a href="gerichtssystem.html"   class="nav-link"><i class="fa fa-gavel"></i> Gericht</a>
       <a href="bewerbungen.html"      class="nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
       <a href="buerger-service.html"  class="nav-link"><i class="fa fa-people-group"></i> Bürger</a>
@@ -48,291 +151,1103 @@
 </nav>
 
 <!-- ========== PAGE HEADER ========== -->
-<div class="page-header">
-  <div class="container page-header-content">
-    <div class="breadcrumb">
-      <a href="index.html">Startseite</a>
-      <span class="sep"><i class="fa fa-chevron-right"></i></span>
-      <span class="current">Gesetze &amp; Regelwerke</span>
-    </div>
-    <h1>Gesetze &amp; Regelwerke</h1>
-    <p>Das vollständige Gesetzeswerk des Staates San Andreas — übersichtlich gegliedert und für jeden Bürger einsehbar.</p>
-  </div>
-  <div class="page-header-border"></div>
-</div>
-
-<!-- ========== NAV TABS ========== -->
-<section class="section-sm bg-gray">
+<section class="page-header">
   <div class="container">
-    <div style="display:flex;gap:12px;flex-wrap:wrap;justify-content:center;">
-      <a href="#strafkatalog" class="btn btn-outline-dark btn-sm"><i class="fa fa-list"></i> Strafkatalog</a>
-      <a href="#gesetzbuch"   class="btn btn-outline-dark btn-sm"><i class="fa fa-book"></i> Gesetzbuch</a>
-      <a href="#verfahren"    class="btn btn-outline-dark btn-sm"><i class="fa fa-scroll"></i> Verfahrensordnung</a>
-    </div>
+    <h1 class="page-header-title">Gesetze &amp; Regelwerke</h1>
+    <p class="page-header-sub">Die vollständige Gesetzessammlung des Staates Berlin – verbindlich für alle Bürgerinnen und Bürger</p>
   </div>
 </section>
 
-<!-- ========== STRAFKATALOG ========== -->
-<section class="section" id="strafkatalog">
+<!-- ========== MAIN CONTENT ========== -->
+<section class="section">
   <div class="container">
-    <div class="section-header">
-      <div class="label">§ Strafrecht</div>
-      <h2>Strafkatalog</h2>
-      <div class="divider-gold"></div>
-      <p>Übersicht aller Straftatbestände mit Strafmaß. Alle Angaben in Minuten Haftstrafe (HZ) und/oder Geldstrafe ($).</p>
+
+    <div class="law-notice">
+      <i class="fa fa-circle-info" style="color:var(--gold);margin-right:.5rem;"></i>
+      Diese Gesetzessammlung gilt ausschließlich auf dem Gebiet des Staates Berlin. Alle Gesetze sind für Bürger, Beamte und Behörden verbindlich. Unwissenheit schützt nicht vor Strafe.
     </div>
 
-    <h3 style="margin-bottom:20px;"><i class="fa fa-person-rifle" style="color:var(--gold);margin-right:10px;"></i>Vergehen gegen Personen</h3>
-    <div class="table-container mb-48">
-      <table class="table">
-        <thead>
-          <tr>
-            <th>§</th>
-            <th>Delikt</th>
-            <th>Strafe (Haft)</th>
-            <th>Geldstrafe</th>
-            <th>Schwere</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr><td>§101</td><td>Einfache Körperverletzung</td><td>10 Min.</td><td>$2.500</td><td><span class="sev-low">Vergehen</span></td></tr>
-          <tr><td>§102</td><td>Schwere Körperverletzung</td><td>20 Min.</td><td>$5.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§103</td><td>Körperverletzung mit Waffe</td><td>30 Min.</td><td>$8.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§104</td><td>Totschlag</td><td>60 Min.</td><td>$15.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§105</td><td>Mord (Vorsätzlich)</td><td>90 Min.</td><td>$25.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§106</td><td>Geiselnahme</td><td>45 Min.</td><td>$10.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§107</td><td>Nötigung</td><td>15 Min.</td><td>$3.000</td><td><span class="sev-low">Vergehen</span></td></tr>
-          <tr><td>§108</td><td>Bedrohung</td><td>10 Min.</td><td>$1.500</td><td><span class="sev-low">Vergehen</span></td></tr>
-        </tbody>
-      </table>
+    <!-- Quick Navigation -->
+    <div class="grid grid-3" style="margin-bottom:2.5rem;">
+      <a href="#stgb" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-gavel"></i></div>
+        <div style="font-weight:700;color:var(--text);">StGB</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Strafgesetzbuch</div>
+      </a>
+      <a href="#stpo" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-scale-balanced"></i></div>
+        <div style="font-weight:700;color:var(--text);">StPO</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Strafprozessordnung</div>
+      </a>
+      <a href="#owig" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-triangle-exclamation"></i></div>
+        <div style="font-weight:700;color:var(--text);">OWiG</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Ordnungswidrigkeiten</div>
+      </a>
+      <a href="#jusg" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-landmark"></i></div>
+        <div style="font-weight:700;color:var(--text);">JusG</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Justizgesetz Berlin</div>
+      </a>
+      <a href="#waffg" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-shield-halved"></i></div>
+        <div style="font-weight:700;color:var(--text);">WaffG</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Waffengesetz</div>
+      </a>
+      <a href="#btmg" class="card text-center" style="text-decoration:none;cursor:pointer;">
+        <div style="font-size:2rem;color:var(--gold);margin-bottom:.5rem;"><i class="fa fa-capsules"></i></div>
+        <div style="font-weight:700;color:var(--text);">BtMG</div>
+        <div style="font-size:.8rem;color:var(--text-muted);">Betäubungsmittelgesetz</div>
+      </a>
     </div>
 
-    <h3 style="margin-bottom:20px;"><i class="fa fa-car-burst" style="color:var(--gold);margin-right:10px;"></i>Vergehen im Straßenverkehr</h3>
-    <div class="table-container mb-48">
-      <table class="table">
-        <thead>
-          <tr><th>§</th><th>Delikt</th><th>Strafe (Haft)</th><th>Geldstrafe</th><th>Schwere</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>§201</td><td>Fahren ohne Führerschein</td><td>—</td><td>$1.500</td><td><span class="sev-low">Ordnungswidrigkeit</span></td></tr>
-          <tr><td>§202</td><td>Überschreitung der Höchstgeschwindigkeit</td><td>—</td><td>$500–$3.000</td><td><span class="sev-low">Ordnungswidrigkeit</span></td></tr>
-          <tr><td>§203</td><td>Fahren unter Alkohol/Drogen (FuA)</td><td>15 Min.</td><td>$4.000</td><td><span class="sev-mid">Vergehen</span></td></tr>
-          <tr><td>§204</td><td>Fahrzeugdiebstahl</td><td>20 Min.</td><td>$5.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§205</td><td>Unerlaubtes Entfernen vom Unfallort</td><td>10 Min.</td><td>$2.000</td><td><span class="sev-low">Vergehen</span></td></tr>
-          <tr><td>§206</td><td>Gefährdung des Straßenverkehrs</td><td>20 Min.</td><td>$6.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§207</td><td>Illegales Straßenrennen</td><td>25 Min.</td><td>$8.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="margin-bottom:20px;"><i class="fa fa-gun" style="color:var(--gold);margin-right:10px;"></i>Waffendelikte</h3>
-    <div class="table-container mb-48">
-      <table class="table">
-        <thead>
-          <tr><th>§</th><th>Delikt</th><th>Strafe (Haft)</th><th>Geldstrafe</th><th>Schwere</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>§301</td><td>Tragen einer Schusswaffe ohne Erlaubnis</td><td>15 Min.</td><td>$3.500</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§302</td><td>Besitz einer illegalen Waffe</td><td>25 Min.</td><td>$7.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§303</td><td>Schusswaffengebrauch in der Öffentlichkeit</td><td>30 Min.</td><td>$8.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§304</td><td>Waffenhandel (illegal)</td><td>50 Min.</td><td>$20.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-
-    <h3 style="margin-bottom:20px;"><i class="fa fa-sack-dollar" style="color:var(--gold);margin-right:10px;"></i>Eigentumsdelikte &amp; Wirtschaft</h3>
-    <div class="table-container">
-      <table class="table">
-        <thead>
-          <tr><th>§</th><th>Delikt</th><th>Strafe (Haft)</th><th>Geldstrafe</th><th>Schwere</th></tr>
-        </thead>
-        <tbody>
-          <tr><td>§401</td><td>Einfacher Diebstahl</td><td>10 Min.</td><td>$1.000</td><td><span class="sev-low">Vergehen</span></td></tr>
-          <tr><td>§402</td><td>Schwerer Diebstahl / Einbruch</td><td>25 Min.</td><td>$6.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§403</td><td>Raub (mit Gewalt)</td><td>40 Min.</td><td>$12.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§404</td><td>Bankraub</td><td>80 Min.</td><td>$30.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§405</td><td>Betrug / Urkundenfälschung</td><td>20 Min.</td><td>$5.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-          <tr><td>§406</td><td>Geldwäsche</td><td>35 Min.</td><td>$15.000</td><td><span class="sev-high">Schweres Verbrechen</span></td></tr>
-          <tr><td>§407</td><td>Hehlerei</td><td>15 Min.</td><td>$4.000</td><td><span class="sev-mid">Verbrechen</span></td></tr>
-        </tbody>
-      </table>
-    </div>
-  </div>
-</section>
-
-<!-- ========== GESETZBUCH ========== -->
-<section class="section bg-gray" id="gesetzbuch">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">§ Gesetzbuch</div>
-      <h2>Strafgesetzbuch (StGB)</h2>
-      <div class="divider-gold"></div>
-      <p>Das vollständige Strafgesetzbuch des Staates San Andreas, gegliedert nach Abschnitten.</p>
-    </div>
-
-    <div class="info-box info-box-gold mb-32">
-      <i class="fa fa-circle-info"></i>
-      <div class="info-box-content">
-        <h5>Hinweis zur Auslegung</h5>
-        <p>Im Zweifelsfall gilt der Grundsatz <em>„in dubio pro reo"</em> (im Zweifel für den Angeklagten).
-          Alle Strafmaße sind Richtwerte — Richter können im Einzelfall abweichen.</p>
+    <!-- ===== StGB ===== -->
+    <div class="law-section" id="stgb">
+      <div class="law-section-header">
+        <div class="law-abbr">StGB</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Strafgesetzbuch</p>
+          <p class="law-desc">Materielles Strafrecht – Tatbestände und Strafrahmen</p>
+        </div>
       </div>
-    </div>
+      <div class="law-body">
 
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title">
-            <div class="acc-num">1</div>
-            <h4>Abschnitt I – Allgemeine Bestimmungen</h4>
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Allg.</span> Allgemeiner Teil – Grundsätze</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 1 – Keine Strafe ohne Gesetz</h4>
+              <p>Eine Tat kann nur bestraft werden, wenn die Strafbarkeit gesetzlich bestimmt war, bevor die Tat begangen wurde.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 2 – Vorsatz und Fahrlässigkeit</h4>
+              <p>Strafbar ist nur vorsätzliches Handeln, sofern das Gesetz nicht ausdrücklich fahrlässiges Handeln mit Strafe bedroht. Vorsätzlich handelt, wer die Verwirklichung des Tatbestandes kennt und will. Fahrlässig handelt, wer die gebotene Sorgfalt außer Acht lässt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 3 – Schuldprinzip</h4>
+              <p>Strafe setzt Schuld voraus. Ohne Schuld keine Strafe. Die Schuld des Täters ist Grundlage für die Zumessung der Strafe.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 4 – Versuch</h4>
+              <p>Der Versuch eines Verbrechens ist stets strafbar. Der Versuch eines Vergehens ist nur strafbar, wenn dies ausdrücklich bestimmt ist. Der Versuch kann milder bestraft werden als die vollendete Tat.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 5 – Mittäterschaft und Beihilfe</h4>
+              <p>Begehen mehrere gemeinschaftlich eine strafbare Handlung, wird jeder als Täter bestraft. Als Gehilfe wird bestraft, wer vorsätzlich einem anderen zu dessen vorsätzlich begangener rechtswidriger Tat Hilfe leistet.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 6 – Notwehr</h4>
+              <p>Wer eine Tat begeht, die durch Notwehr geboten ist, handelt nicht rechtswidrig. Notwehr ist die Verteidigung, die erforderlich ist, um einen gegenwärtigen rechtswidrigen Angriff von sich oder einem anderen abzuwenden. Die Verteidigungshandlung muss verhältnismäßig sein.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 7 – Strafrahmen</h4>
+              <p>Strafen im Sinne dieses Gesetzbuches sind: Geldstrafe, Freiheitsstrafe bis zu 3 Jahren, sowie Fahrzeug- und Waffenentzug. Die anzuwendende Strafe richtet sich nach der Schwere der Tat, den persönlichen Verhältnissen des Täters und dem Ausmaß des angerichteten Schadens.</p>
+            </div>
           </div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
         </div>
-        <div class="accordion-body">
-          <p><strong>§1 – Legalitätsprinzip:</strong> Eine Tat kann nur bestraft werden, wenn die Strafbarkeit gesetzlich bestimmt war, bevor die Tat begangen wurde.</p>
-          <p style="margin-top:12px;"><strong>§2 – Geltungsbereich:</strong> Dieses Gesetzbuch gilt für alle natürlichen und juristischen Personen, die sich im Staatsgebiet von San Andreas aufhalten oder handeln.</p>
-          <p style="margin-top:12px;"><strong>§3 – Strafmündigkeit:</strong> Strafmündig ist, wer das 18. Lebensjahr vollendet hat. Minderjährige unterliegen gesonderten Regelungen.</p>
-          <p style="margin-top:12px;"><strong>§4 – Schuldprinzip:</strong> Ohne Schuld keine Strafe. Vorsatz und Fahrlässigkeit werden unterschiedlich bewertet.</p>
-          <ul>
-            <li>Vorsätzliche Taten werden grundsätzlich schwerer bestraft als fahrlässige.</li>
-            <li>Notwehr und Notstand sind anerkannte Rechtfertigungsgründe.</li>
-            <li>Bei Notwehr muss die Verteidigung verhältnismäßig sein.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title">
-            <div class="acc-num">2</div>
-            <h4>Abschnitt II – Straftaten gegen den Staat</h4>
-          </div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
-        </div>
-        <div class="accordion-body">
-          <p>Straftaten gegen den Staat gefährden die öffentliche Ordnung und die staatlichen Institutionen.</p>
-          <ul>
-            <li><strong>§501 Widerstand gegen Staatsgewalt:</strong> Wer einer Vollstreckungshandlung einer Amtsperson Widerstand leistet, wird mit bis zu 20 Minuten Haft bestraft.</li>
-            <li><strong>§502 Angriff auf Beamte:</strong> Tätliche Angriffe auf Polizeibeamte oder Justizbeamte werden mit 30–60 Minuten Haft bestraft.</li>
-            <li><strong>§503 Bestechung:</strong> Wer einem Amtsträger einen Vorteil anbietet, wird mit Geldstrafe ($10.000–$30.000) und/oder Haft bestraft.</li>
-            <li><strong>§504 Amtsmissbrauch:</strong> Amtsträger, die ihre Stellung missbrauchen, werden aus dem Amt entfernt und strafrechtlich verfolgt.</li>
-            <li><strong>§505 Hochverrat:</strong> Die schwerste Straftat gegen den Staat — führt zur höchsten Strafe und dauerhaften Berufsverboten.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title">
-            <div class="acc-num">3</div>
-            <h4>Abschnitt III – Betäubungsmittelgesetz (BtMG)</h4>
-          </div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
-        </div>
-        <div class="accordion-body">
-          <p>Der Handel, Besitz und Konsum illegaler Substanzen ist im Staatsgebiet verboten.</p>
-          <ul>
-            <li><strong>§601 Besitz geringer Mengen:</strong> Besitz kleiner Mengen illegaler Substanzen zum Eigengebrauch — Geldstrafe $1.500 bis $3.000.</li>
-            <li><strong>§602 Besitz in Handelsmengen:</strong> Besitz einer Menge, die auf Handel hinweist — 20–40 Minuten Haft + $8.000.</li>
-            <li><strong>§603 Handel mit Betäubungsmitteln:</strong> Aktiver Verkauf oder Handel — 40–70 Minuten Haft + $15.000.</li>
-            <li><strong>§604 Betrieb eines Drogenlabors:</strong> 60–90 Minuten Haft + $25.000 Geldstrafe.</li>
-            <li><strong>§605 Organisierter Drogenhandel:</strong> Schwerstes Drogendelikt — Höchststrafe + Vermögenseinzug.</li>
-          </ul>
-        </div>
-      </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title">
-            <div class="acc-num">4</div>
-            <h4>Abschnitt IV – Strafmilderung &amp; -schärfung</h4>
-          </div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
-        </div>
-        <div class="accordion-body">
-          <p>Richter haben die Möglichkeit, das Strafmaß nach unten oder oben anzupassen.</p>
-          <ul>
-            <li><strong>Strafmildernd:</strong> Geständnis, Kooperation mit Ermittlungen, fehlende Vorstrafen, erkennbare Reue.</li>
-            <li><strong>Strafschärfend:</strong> Vorstrafen, Bandenkriminalität, Tatbegehung gegenüber Schutzbedürftigen, besondere Brutalität.</li>
-            <li><strong>Strafaussetzung zur Bewährung:</strong> Möglich bei erstmaliger Verurteilung und leichteren Vergehen nach Ermessen des Richters.</li>
-            <li><strong>Strafzusammenrechnung:</strong> Bei mehreren Vergehen kann das Gericht eine Gesamtstrafe verhängen, die unter der Summe aller Einzelstrafen liegt.</li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 
-<!-- ========== VERFAHRENSORDNUNG ========== -->
-<section class="section" id="verfahren">
-  <div class="container">
-    <div class="section-header">
-      <div class="label">§ Verfahrensrecht</div>
-      <h2>Verfahrensordnung (VerfO)</h2>
-      <div class="divider-gold"></div>
-      <p>Die Verfahrensordnung regelt den Ablauf gerichtlicher Prozesse und die Rechte aller Beteiligten.</p>
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 1</span> Straftaten gegen das Leben</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 10 – Mord</h4>
+              <p>Wer einen Menschen tötet und dabei mit Heimtücke, Habgier, grausam oder sonst mit gemeingefährlichen Mitteln handelt, wird wegen Mordes mit lebenslanger Freiheitsstrafe oder Freiheitsstrafe von 10 bis 30 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 11 – Totschlag</h4>
+              <p>Wer einen Menschen tötet, ohne Mörder zu sein, wird wegen Totschlags mit Freiheitsstrafe von 5 bis 15 Jahren bestraft. In besonders schweren Fällen kann lebenslange Freiheitsstrafe verhängt werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 12 – Fahrlässige Tötung</h4>
+              <p>Wer durch Fahrlässigkeit den Tod eines Menschen verursacht, wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 13 – Aussetzung</h4>
+              <p>Wer einen Menschen, dem gegenüber er zur Fürsorge verpflichtet ist, in eine hilflose Lage versetzt oder in einer hilflosen Lage im Stich lässt, wird mit Freiheitsstrafe von 3 Monaten bis zu 5 Jahren bestraft.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 2</span> Straftaten gegen die körperliche Unversehrtheit</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 20 – Körperverletzung</h4>
+              <p>Wer eine andere Person körperlich misshandelt oder an der Gesundheit schädigt, wird mit Geldstrafe oder Freiheitsstrafe bis zu 2 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 21 – Schwere Körperverletzung</h4>
+              <p>Wird die Körperverletzung mit einer Waffe begangen, durch eine das Leben gefährdende Behandlung, oder bleibende Schäden hinterlassen, ist die Strafe Freiheitsstrafe von 1 bis 5 Jahren.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 22 – Gefährliche Körperverletzung</h4>
+              <p>Wer die Körperverletzung mittels einer Waffe, eines anderen gefährlichen Werkzeugs oder durch gemeinschaftliche Begehung begeht, wird mit Freiheitsstrafe von 6 Monaten bis 3 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 23 – Körperverletzung mit Todesfolge</h4>
+              <p>Verursacht der Täter durch die Körperverletzung wenigstens leichtfertig den Tod des Verletzten, so ist die Strafe Freiheitsstrafe von 5 bis 15 Jahren.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 3</span> Straftaten gegen die persönliche Freiheit</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 30 – Freiheitsberaubung</h4>
+              <p>Wer einen Menschen rechtswidrig einsperrt oder auf andere Weise der Freiheit beraubt, wird mit Freiheitsstrafe bis zu 5 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 31 – Nötigung</h4>
+              <p>Wer einen Menschen mit Gewalt oder durch Drohung mit einem empfindlichen Übel zu einer Handlung, Duldung oder Unterlassung nötigt, wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 32 – Bedrohung</h4>
+              <p>Wer einen Menschen mit der Begehung eines gegen ihn gerichteten Verbrechens bedroht, wird mit Freiheitsstrafe bis zu 1 Jahr oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 33 – Entführung / Geiselnahme</h4>
+              <p>Wer jemanden entführt oder als Geisel nimmt, um einen Dritten zu Handlungen zu nötigen, wird mit Freiheitsstrafe von 5 bis 15 Jahren bestraft. In besonders schweren Fällen lebenslange Freiheitsstrafe.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 4</span> Diebstahl und Eigentumsdelikte</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 40 – Diebstahl</h4>
+              <p>Wer eine fremde bewegliche Sache einem anderen in der Absicht wegnimmt, die Sache sich oder einem Dritten rechtswidrig zuzueignen, wird mit Freiheitsstrafe bis zu 2 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 41 – Schwerer Diebstahl</h4>
+              <p>In besonders schweren Fällen, etwa durch Einbruch, Überwindung von Sicherungen oder bei Diebstahl von Sachen von besonderem Wert, ist die Strafe Freiheitsstrafe von 3 Monaten bis 5 Jahren.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 42 – Raub</h4>
+              <p>Wer mit Gewalt gegen eine Person oder unter Anwendung von Drohungen mit gegenwärtiger Gefahr für Leib oder Leben einen Diebstahl begeht, wird mit Freiheitsstrafe von 1 bis 10 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 43 – Schwerer Raub</h4>
+              <p>Wird der Raub mit einer Waffe oder bandenmäßig begangen, ist die Mindeststrafe 3 Jahre Freiheitsstrafe.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 44 – Erpressung</h4>
+              <p>Wer einen Menschen rechtswidrig mit Gewalt oder durch Drohung zu einer Vermögensverfügung nötigt, wird mit Freiheitsstrafe bis zu 5 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 45 – Hehlerei</h4>
+              <p>Wer eine durch eine rechtswidrige Tat erlangte Sache ankauft, verbirgt oder absetzt, wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 46 – Sachbeschädigung</h4>
+              <p>Wer rechtswidrig eine fremde Sache beschädigt oder zerstört, wird mit Freiheitsstrafe bis zu 2 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 5</span> Straftaten gegen den Staat und die öffentliche Ordnung</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 50 – Widerstand gegen Vollstreckungsbeamte</h4>
+              <p>Wer einem Amtsträger, der zur Vollstreckung berechtigt ist, bei der Vornahme einer Vollstreckungshandlung mit Gewalt oder Drohung Widerstand leistet, wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 51 – Tätlicher Angriff auf Vollstreckungsbeamte</h4>
+              <p>Wer einen Vollstreckungsbeamten tätlich angreift, wird mit Freiheitsstrafe von 3 Monaten bis zu 5 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 52 – Amtsanmaßung</h4>
+              <p>Wer unbefugt ein öffentliches Amt ausübt oder eine Handlung vornimmt, die nur kraft eines öffentlichen Amts vorgenommen werden darf, wird mit Freiheitsstrafe bis zu 2 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 53 – Bestechung und Bestechlichkeit</h4>
+              <p>Wer einem Amtsträger einen Vorteil anbietet, verspricht oder gewährt, um ihn zu einer pflichtwidrigen Diensthandlung zu veranlassen, wird mit Freiheitsstrafe bis zu 5 Jahren oder Geldstrafe bestraft. Amtsträger, die einen solchen Vorteil fordern, annehmen oder sich versprechen lassen, werden ebenso bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 54 – Gefangenenbefreiung</h4>
+              <p>Wer einen Gefangenen befreit oder ihm zur Flucht behilflich ist, wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 55 – Falsches Zeugnis</h4>
+              <p>Wer als Zeuge oder Sachverständiger vor Gericht falsch aussagt, wird mit Freiheitsstrafe bis zu 5 Jahren bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 56 – Vortäuschen einer Straftat</h4>
+              <p>Wer bei einer Behörde eine Straftat wider besseres Wissen anzeigt, wird mit Freiheitsstrafe bis zu 2 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Kap. 6</span> Organisierte Kriminalität und Bandenkriminalität</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 60 – Bildung krimineller Vereinigungen</h4>
+              <p>Wer eine Vereinigung gründet, deren Zwecke oder deren Tätigkeit darauf gerichtet ist, Straftaten zu begehen, oder sich als Mitglied an einer solchen Vereinigung beteiligt, wird mit Freiheitsstrafe bis zu 5 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 61 – Bandenmäßige Begehung</h4>
+              <p>Die bandenmäßige Begehung von Straftaten ist ein strafschärfender Umstand. Bei Raub, Diebstahl oder Drogenhandel in einer Bande erhöht sich der Strafrahmen um mindestens die Hälfte.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 62 – Geldwäsche</h4>
+              <p>Wer einen Gegenstand, der aus einer rechtswidrigen Tat herrührt, verbirgt, in den Rechtsverkehr einschleust oder verschleiert, wird mit Freiheitsstrafe bis zu 5 Jahren oder Geldstrafe bestraft.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
     </div>
 
-    <div class="accordion">
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title"><div class="acc-num">I</div><h4>Einleitung eines Verfahrens</h4></div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li>Ein Verfahren wird durch Anklage der Staatsanwaltschaft oder durch Privatklage eines Bürgers eingeleitet.</li>
-            <li>Der Angeklagte ist unverzüglich über die Anklage zu informieren und hat das Recht, einen Anwalt zu bestellen.</li>
-            <li>Die Staatsanwaltschaft legt die Anklageschrift dem zuständigen Gericht vor.</li>
-            <li>Das Gericht prüft die Zulässigkeit der Klage und setzt einen Verhandlungstermin fest.</li>
-            <li>Alle Beteiligten (Staatsanwaltschaft, Verteidigung, Zeugen) werden rechtzeitig geladen.</li>
-          </ul>
+    <!-- ===== StPO ===== -->
+    <div class="law-section" id="stpo">
+      <div class="law-section-header">
+        <div class="law-abbr">StPO</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Strafprozessordnung</p>
+          <p class="law-desc">Verfahrensrecht – Ermittlung, Verhaftung, Anklage und Hauptverhandlung</p>
         </div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title"><div class="acc-num">II</div><h4>Rechte des Angeklagten</h4></div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
+      <div class="law-body">
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Teil I</span> Zuständigkeit und Allgemeine Bestimmungen (§§ 1–15)</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 1 – Sachliche Zuständigkeit</h4>
+              <p>Für die Strafverfolgung ist das Amtsgericht Berlin zuständig, soweit nicht eine besondere Zuständigkeit bestimmt ist. Schwere Verbrechen werden vor dem Landgericht Berlin verhandelt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 2 – Örtliche Zuständigkeit</h4>
+              <p>Zuständig ist das Gericht, in dessen Bezirk die Tat begangen wurde, der Täter wohnhaft ist oder aufgegriffen wurde.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 3 – Staatsanwaltschaft</h4>
+              <p>Die Staatsanwaltschaft ist die Strafverfolgungsbehörde des Staates Berlin. Sie leitet das Ermittlungsverfahren und erhebt öffentliche Klage.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 4 – Legalitätsprinzip</h4>
+              <p>Die Staatsanwaltschaft ist verpflichtet, wegen aller verfolgbaren Straftaten einzuschreiten, sofern zureichende tatsächliche Anhaltspunkte vorliegen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 5 – Beschleunigungsgebot</h4>
+              <p>Strafverfahren sind so zügig wie möglich zu führen. Unzumutbare Verfahrensverzögerungen können zur Strafminderung oder Einstellung führen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 6 – Unschuldsvermutung</h4>
+              <p>Jeder Beschuldigte gilt bis zur rechtskräftigen Verurteilung als unschuldig. Die Beweislast liegt bei der Staatsanwaltschaft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 7 – Recht auf rechtliches Gehör</h4>
+              <p>Jeder Beschuldigte hat das Recht, zu den gegen ihn erhobenen Vorwürfen Stellung zu nehmen, bevor eine Entscheidung ergeht.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 8 – Verteidiger</h4>
+              <p>Der Beschuldigte hat das Recht, sich eines Verteidigers zu bedienen. Ist ein Beschuldigter nicht in der Lage, sich selbst zu verteidigen, wird ihm auf Antrag oder von Amts wegen ein Pflichtverteidiger bestellt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 9 – Akteneinsicht</h4>
+              <p>Der Verteidiger ist berechtigt, die dem Gericht vorliegenden Akten einzusehen. Die Einsichtnahme kann beschränkt werden, soweit überwiegende Interessen des Opfers entgegenstehen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 10 – Beweiserhebung</h4>
+              <p>Das Gericht hat von Amts wegen alle für die Entscheidung relevanten Tatsachen zu ermitteln. Beweise sind nach freier Beweiswürdigung zu beurteilen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 11 – Zeugenaussagen</h4>
+              <p>Zeugen sind zur wahrheitsgemäßen Aussage verpflichtet. Sie können das Zeugnis verweigern, wenn die Aussage sie selbst belasten würde (Aussageverweigerungsrecht).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 12 – Sachverständige</h4>
+              <p>Sachverständige werden herangezogen, wenn besonderes Fachwissen erforderlich ist. Sie sind zur objektiven und vollständigen Begutachtung verpflichtet.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 13 – Urkundenbeweis</h4>
+              <p>Urkunden und Schriftstücke können als Beweismittel verlesen oder in Augenschein genommen werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 14 – Augenscheinsbeweis</h4>
+              <p>Das Gericht kann sich durch unmittelbare Wahrnehmung von Tatsachen oder Gegenständen überzeugen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 15 – Beweisverwertungsverbot</h4>
+              <p>Beweise, die unter Verletzung von Grundrechten oder wesentlichen Verfahrensvorschriften erhoben wurden, dürfen nicht verwertet werden.</p>
+            </div>
+          </div>
         </div>
-        <div class="accordion-body">
-          <ul>
-            <li>Recht zu schweigen — keine Aussage darf erzwungen werden.</li>
-            <li>Recht auf einen Anwalt — auf Wunsch wird ein Pflichtverteidiger bestellt.</li>
-            <li>Recht auf Akteneinsicht — alle Beweise müssen offengelegt werden.</li>
-            <li>Recht auf ein faires und öffentliches Verfahren.</li>
-            <li>Recht auf Einspruch gegen das Urteil (Berufung) innerhalb von 24 Stunden.</li>
-            <li>Unschuldsvermutung — der Angeklagte gilt als unschuldig, bis das Gegenteil bewiesen ist.</li>
-          </ul>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Teil II</span> Ermittlungsverfahren (§§ 16–35)</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 16 – Einleitung des Ermittlungsverfahrens</h4>
+              <p>Das Ermittlungsverfahren wird eingeleitet, sobald die Staatsanwaltschaft oder Polizei von einem Anfangsverdacht Kenntnis erlangt. Anlass können Anzeigen, eigene Wahrnehmungen oder Hinweise Dritter sein.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 17 – Ermittlungsmethoden</h4>
+              <p>Die Polizei darf Zeugen und Beschuldigte befragen, Durchsuchungen und Beschlagnahmungen vornehmen sowie technische Mittel zur Beweissicherung einsetzen, soweit dies durch Gesetz oder richterlichen Beschluss gedeckt ist.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 18 – Vernehmung des Beschuldigten</h4>
+              <p>Vor der Vernehmung ist dem Beschuldigten mitzuteilen, welche Tat ihm zur Last gelegt wird. Er ist auf sein Schweigerecht hinzuweisen. Erzwungene Aussagen sind unverwertbar.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 19 – Durchsuchung</h4>
+              <p>Durchsuchungen von Personen und Räumen bedürfen grundsätzlich eines richterlichen Beschlusses. Bei Gefahr im Verzug kann die Polizei auch ohne Beschluss durchsuchen, muss jedoch unverzüglich einen Beschluss nachholen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 20 – Beschlagnahme</h4>
+              <p>Gegenstände, die als Beweismittel von Bedeutung sein können oder dem Verfall unterliegen, können beschlagnahmt werden. Die betroffene Person ist unverzüglich zu benachrichtigen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 21 – Sicherstellung</h4>
+              <p>Gefährliche Gegenstände oder solche, die zur Gefahrenabwehr notwendig sind, können sichergestellt werden, auch wenn keine Beschlagnahme vorliegt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 22 – Verdeckte Ermittlung</h4>
+              <p>Die Polizei darf unter Verdeckung ihrer Identität ermitteln, wenn dies zur Aufklärung schwerwiegender Straftaten unerlässlich ist und ein richterlicher Beschluss vorliegt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 23 – Observation</h4>
+              <p>Personen können für die Dauer von bis zu 72 Stunden observiert werden. Eine Verlängerung bedarf einer richterlichen Genehmigung.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 24 – Abschluss der Ermittlungen</h4>
+              <p>Nach Abschluss der Ermittlungen entscheidet die Staatsanwaltschaft, ob Anklage erhoben, das Verfahren eingestellt oder ein Strafbefehl beantragt wird.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 25 – Einstellung des Verfahrens</h4>
+              <p>Das Verfahren kann eingestellt werden, wenn kein hinreichender Tatverdacht besteht, die Tat verjährt ist oder ein Strafausschließungsgrund vorliegt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 26 – Opportunitätsprinzip</h4>
+              <p>Bei Vergehen geringer Schwere kann die Staatsanwaltschaft von der Verfolgung absehen, wenn das öffentliche Interesse an der Strafverfolgung gering ist und der Schuldige die Folgen seiner Tat in Maßen trägt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 27 – Strafbefehl</h4>
+              <p>Bei Vergehen kann die Staatsanwaltschaft beim Amtsgericht einen Strafbefehl beantragen. Gegen den Strafbefehl kann der Beschuldigte Einspruch einlegen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 28 – Kronzeugenregelung</h4>
+              <p>Wer zur Aufklärung einer schwerwiegenden Straftat beiträgt und glaubwürdige Angaben zu Mittätern macht, kann eine erhebliche Strafmilderung erhalten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 29 – Täter-Opfer-Ausgleich</h4>
+              <p>Die Staatsanwaltschaft kann ein Verfahren bei Vergehen einstellen, wenn Täter und Opfer einen Ausgleich herbeiführen und der Täter den entstandenen Schaden ersetzt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 30 – Wiederaufnahme des Verfahrens</h4>
+              <p>Ein rechtskräftig abgeschlossenes Verfahren kann zugunsten oder zuungunsten des Verurteilten wieder aufgenommen werden, wenn neue Tatsachen oder Beweise bekannt werden, die eine andere Entscheidung rechtfertigen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 31 – Anzeigeerstattung</h4>
+              <p>Jeder Bürger ist berechtigt, bei der Polizei oder Staatsanwaltschaft Anzeige wegen einer Straftat zu erstatten. Falsche Anzeigen sind nach § 56 StGB strafbar.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 32 – Opferrechte</h4>
+              <p>Opfer von Straftaten haben das Recht auf Information über den Verfahrensstand, das Recht auf Nebenklage bei schweren Verbrechen sowie Anspruch auf Schutzmaßnahmen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 33 – Akteneinsicht der Staatsanwaltschaft</h4>
+              <p>Die Staatsanwaltschaft kann sämtliche Ermittlungsakten einsehen und weitere Ermittlungsmaßnahmen anordnen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 34 – Polizeiliche Maßnahmen</h4>
+              <p>Die Polizei handelt im Ermittlungsverfahren im Auftrag und nach Weisungen der Staatsanwaltschaft. Eigenständige Maßnahmen sind auf das absolut Notwendige zu beschränken und unverzüglich der Staatsanwaltschaft zu melden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 35 – Rechtshilfe</h4>
+              <p>Behörden sind verpflichtet, der Staatsanwaltschaft und den Gerichten im Rahmen des Möglichen Rechtshilfe zu leisten.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Teil III</span> Festnahme und Untersuchungshaft (§§ 36–55)</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 36 – Vorläufige Festnahme</h4>
+              <p>Die Polizei darf eine Person vorläufig festnehmen, wenn sie auf frischer Tat betroffen oder verfolgt wird, Fluchtgefahr besteht oder zur Klärung der Identität. Die Festnahme ist unverzüglich der Staatsanwaltschaft mitzuteilen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 37 – Belehrungspflicht bei Festnahme</h4>
+              <p>Bei der Festnahme ist die Person unverzüglich über den Grund der Festnahme, ihr Schweigerecht und ihr Recht auf einen Verteidiger zu belehren.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 38 – Haftbefehl</h4>
+              <p>Ein Haftbefehl kann erlassen werden, wenn der Beschuldigte dringend verdächtig ist, eine Straftat begangen zu haben, und Haftgründe vorliegen. Haftgründe sind Fluchtgefahr, Verdunkelungsgefahr oder Wiederholungsgefahr.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 39 – Zuständigkeit für Haftbefehl</h4>
+              <p>Haftbefehle werden vom zuständigen Richter auf Antrag der Staatsanwaltschaft erlassen. In dringenden Fällen kann die Staatsanwaltschaft einen vorläufigen Haftbefehl erlassen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 40 – Vorführung beim Richter</h4>
+              <p>Ein Festgenommener ist spätestens am nächsten Tag dem Richter vorzuführen. Der Richter entscheidet über Aufrechterhaltung oder Aufhebung des Haftbefehls.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 41 – Untersuchungshaft</h4>
+              <p>Untersuchungshaft darf nur vollzogen werden, wenn ein Haftbefehl besteht. Sie ist auf das unbedingt notwendige Maß zu beschränken.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 42 – Haftprüfung</h4>
+              <p>Der Inhaftierte kann jederzeit die Überprüfung des Haftbefehls beantragen. Das Gericht entscheidet innerhalb von 24 Stunden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 43 – Haftentlassung gegen Auflagen</h4>
+              <p>Statt eines Haftbefehls können dem Beschuldigten Auflagen erteilt werden, wie Meldepflicht, Aufenthaltsverbot oder Sicherheitsleistung (Kaution).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 44 – Verhör in der Haft</h4>
+              <p>Der Inhaftierte darf während der Untersuchungshaft jederzeit vernommen werden. Er ist stets auf sein Schweigerecht hinzuweisen. Erzwungene Aussagen sind unverwertbar.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 45 – Recht auf Anwalt in der Haft</h4>
+              <p>Jeder Inhaftierte hat das uneingeschränkte Recht, einen Anwalt hinzuzuziehen und sich mit ihm zu beraten. Gespräche mit dem Verteidiger sind vertraulich.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 46 – Behandlung in der Haft</h4>
+              <p>Inhaftierte sind menschenwürdig zu behandeln. Körperliche und psychische Misshandlungen sind verboten und werden als Amtsmissbrauch verfolgt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 47 – Isolation</h4>
+              <p>Kontaktsperre darf nur bei konkreter Gefahr der Verdunkelung angeordnet werden und bedarf einer richterlichen Genehmigung.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 48 – Entlassung aus der Untersuchungshaft</h4>
+              <p>Der Haftbefehl ist aufzuheben, wenn die Voraussetzungen nicht mehr vorliegen oder die Dauer der Untersuchungshaft im Verhältnis zur zu erwartenden Strafe unverhältnismäßig ist.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 49 – Anrechnung der Untersuchungshaft</h4>
+              <p>Die erlittene Untersuchungshaft wird auf eine verhängte Freiheitsstrafe angerechnet.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 50 – Festnahme durch Privatpersonen</h4>
+              <p>Jede Person ist befugt, einen auf frischer Tat Betroffenen vorläufig festzunehmen, wenn er flüchtig ist oder seine Identität nicht festgestellt werden kann. Die festgenommene Person ist unverzüglich der Polizei zu übergeben.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 51 – Verhältnismäßigkeit bei Festnahme</h4>
+              <p>Bei der Festnahme darf nur so viel Kraft angewendet werden, wie unbedingt notwendig ist. Unverhältnismäßige Gewalt begründet Strafbarkeit des Festnehmenden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 52 – Erkennungsdienstliche Behandlung</h4>
+              <p>Zur Identitätsfeststellung oder Beweissicherung dürfen Fingerabdrücke genommen und Lichtbilder gefertigt werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 53 – DNA-Analyse</h4>
+              <p>DNA-Proben dürfen bei dringendem Tatverdacht schwerer Straftaten mit richterlicher Genehmigung entnommen werden. Die Daten sind nach Abschluss des Verfahrens zu löschen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 54 – Maßregeln der Besserung und Sicherung</h4>
+              <p>Neben der Strafe können Maßregeln wie Fahrverbot, Berufsverbot oder Einziehung von Tatmitteln angeordnet werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 55 – Verfall und Einziehung</h4>
+              <p>Gegenstände, die durch eine Straftat erlangt wurden oder zur Begehung dienten, werden eingezogen. Der aus der Tat erlangte wirtschaftliche Vorteil wird abgeschöpft.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Teil IV</span> Anklageverfahren und Hauptverhandlung (§§ 56–85)</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 56 – Erhebung der Anklage</h4>
+              <p>Die Staatsanwaltschaft erhebt Anklage bei dem zuständigen Gericht, wenn sie nach Abschluss der Ermittlungen eine hinreichende Tatverdachtslage als gegeben ansieht.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 57 – Inhalt der Anklageschrift</h4>
+              <p>Die Anklageschrift muss Angaben zum Beschuldigten, zur Tat (Zeit, Ort, Art), zur rechtlichen Würdigung und zu den Beweismitteln enthalten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 58 – Eröffnung des Hauptverfahrens</h4>
+              <p>Das Gericht prüft die Anklageschrift und eröffnet das Hauptverfahren, wenn es hinreichende Tatverdachtsgründe bejaht. Andernfalls wird die Eröffnung abgelehnt und das Verfahren eingestellt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 59 – Ladung zur Hauptverhandlung</h4>
+              <p>Angeklagter, Verteidiger, Staatsanwalt, Zeugen und Sachverständige werden zur Hauptverhandlung geladen. Die Ladung muss mindestens 48 Stunden vor dem Termin zugestellt werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 60 – Öffentlichkeit der Hauptverhandlung</h4>
+              <p>Hauptverhandlungen sind grundsätzlich öffentlich. Das Gericht kann die Öffentlichkeit bei Gefährdung der öffentlichen Ordnung oder zum Schutz von Opfern ausschließen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 61 – Leitung der Hauptverhandlung</h4>
+              <p>Der Vorsitzende Richter leitet die Hauptverhandlung. Er sorgt für die Einhaltung der Ordnung und Würde des Gerichts.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 62 – Anklageverlesung</h4>
+              <p>Zu Beginn der Hauptverhandlung wird die Anklageschrift verlesen. Der Angeklagte wird über sein Schweigerecht belehrt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 63 – Einlassung des Angeklagten</h4>
+              <p>Der Angeklagte kann sich zur Sache einlassen oder von seinem Schweigerecht Gebrauch machen. Das Schweigen darf nicht zu seinem Nachteil gewertet werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 64 – Beweisaufnahme</h4>
+              <p>In der Hauptverhandlung werden alle zulässigen Beweismittel erhoben. Zeugen werden vernommen, Sachverständige angehört, Urkunden verlesen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 65 – Fragerecht</h4>
+              <p>Staatsanwalt, Verteidiger und Angeklagter haben das Recht, Zeugen und Sachverständige zu befragen. Unzulässige oder suggestive Fragen können vom Richter zurückgewiesen werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 66 – Schlussplädoyers</h4>
+              <p>Nach der Beweisaufnahme halten Staatsanwalt und Verteidiger ihre Schlussplädoyers. Das letzte Wort hat stets der Angeklagte.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 67 – Urteilsfindung</h4>
+              <p>Das Urteil ergeht auf Grundlage der in der Hauptverhandlung gewonnenen Überzeugung des Gerichts. Im Zweifel ist zugunsten des Angeklagten zu entscheiden (in dubio pro reo).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 68 – Urteilsverkündung</h4>
+              <p>Das Urteil wird am Ende der Hauptverhandlung oder zu einem gesonderten Termin öffentlich verkündet. Es umfasst den Schuldspruch, den Strafausspruch und die Begründung.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 69 – Freispruch</h4>
+              <p>Kann die Schuld des Angeklagten nicht nachgewiesen werden, ergeht Freispruch. Der Freigesprochene hat Anspruch auf Entschädigung für erlittene Untersuchungshaft.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 70 – Strafzumessung</h4>
+              <p>Bei der Strafzumessung berücksichtigt das Gericht Schwere der Tat, Ausmaß der Schuld, Vorleben des Täters, Tatfolgen, Reue und Wiedergutmachung.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 71 – Bewährungsstrafe</h4>
+              <p>Freiheitsstrafen bis zu 2 Jahren können zur Bewährung ausgesetzt werden, wenn eine günstige Sozialprognose gestellt werden kann. Die Bewährungszeit beträgt 1 bis 3 Jahre.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 72 – Rechtsmittel</h4>
+              <p>Gegen Urteile des Amtsgerichts kann Berufung eingelegt werden. Gegen Berufungsurteile und Urteile des Landgerichts ist Revision möglich.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 73 – Berufung</h4>
+              <p>Die Berufung muss innerhalb von einer Woche nach Urteilsverkündung eingelegt werden. Das Berufungsgericht überprüft Tat- und Rechtsfragen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 74 – Revision</h4>
+              <p>Die Revision kann nur auf Rechtsfehler gestützt werden. Sie ist beim Revisionsgericht innerhalb von einer Woche nach Zustellung des Urteils einzulegen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 75 – Rechtskraft</h4>
+              <p>Ein Urteil wird rechtskräftig, wenn keine Rechtsmittel mehr zulässig sind oder die Rechtsmittelfristen ungenutzt verstrichen sind.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 76 – ne bis in idem</h4>
+              <p>Wegen derselben Tat darf niemand zweimal strafrechtlich verfolgt werden (Verbot der Doppelbestrafung).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 77 – Strafvollstreckung</h4>
+              <p>Die Vollstreckung rechtskräftiger Urteile obliegt der Staatsanwaltschaft. Geldstrafen sind innerhalb der im Urteil gesetzten Frist zu entrichten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 78 – Strafaussetzung zur Bewährung – Widerruf</h4>
+              <p>Begeht der Verurteilte während der Bewährungszeit eine neue Straftat oder verstößt er erheblich gegen Auflagen, wird die Strafaussetzung widerrufen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 79 – Geldstrafe</h4>
+              <p>Geldstrafen werden in Tagessätzen bemessen. Die Anzahl richtet sich nach der Schwere der Tat, die Höhe nach den wirtschaftlichen Verhältnissen des Täters.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 80 – Freiheitsstrafe</h4>
+              <p>Freiheitsstrafen werden in einer staatlichen Justizvollzugsanstalt verbüßt. Mindestdauer ist 1 Monat, Höchstdauer bei zeitiger Freiheitsstrafe 15 Jahre.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 81 – Verjährung</h4>
+              <p>Vergehen verjähren nach 3 Jahren, Verbrechen nach 10 Jahren, Verbrechen gegen das Leben nicht. Die Verjährungsfrist beginnt mit Beendigung der Tat.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 82 – Kosten des Verfahrens</h4>
+              <p>Im Falle einer Verurteilung trägt der Angeklagte die Kosten des Verfahrens. Im Falle des Freispruchs trägt die Staatskasse die Kosten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 83 – Prozesskostenhilfe</h4>
+              <p>Mittellose Bürger können Prozesskostenhilfe beantragen, wenn die Rechtsverfolgung hinreichende Aussicht auf Erfolg hat.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 84 – Adhäsionsverfahren</h4>
+              <p>Im Strafverfahren können Opfer gleichzeitig zivilrechtliche Schadensersatzansprüche geltend machen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 85 – Jugendstrafrecht</h4>
+              <p>Für Täter unter 18 Jahren gelten besondere Jugendstrafrechtsregeln. Im Vordergrund stehen Erziehungsmaßregeln und Jugendhilfemaßnahmen statt Strafe.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Teil V</span> Besondere Verfahren (§§ 86–117)</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 86 – Beschleunigtes Verfahren</h4>
+              <p>Bei einfachen Sachlagen und geringen Strafen kann ein beschleunigtes Verfahren durchgeführt werden. Die Hauptverhandlung findet innerhalb von 24 Stunden nach der Festnahme statt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 87 – Sicherungsverfahren</h4>
+              <p>Ist der Beschuldigte schuldunfähig, kann das Gericht Maßregeln der Sicherung und Besserung anordnen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 88 – Abwesenheitsverfahren</h4>
+              <p>Gegen einen flüchtigen Angeklagten kann unter strengen Voraussetzungen in Abwesenheit verhandelt werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 89 – Verständigung im Strafverfahren</h4>
+              <p>Das Gericht kann mit Staatsanwaltschaft und Verteidigung eine Verständigung über den weiteren Verfahrensablauf treffen. Eine Zusage über das Strafmaß ist nur in engen Grenzen zulässig.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 90–117 – Weitere Verfahrensbestimmungen</h4>
+              <p>Diese Paragraphen regeln ergänzend Themen wie internationale Rechtshilfe, Auslieferung, Datenschutz in Strafverfahren, spezielle Zuständigkeiten sowie Verfahren bei organisierten Verbrechensstrukturen und Sonderverhältnisse für Amtsträger.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== OWiG ===== -->
+    <div class="law-section" id="owig">
+      <div class="law-section-header">
+        <div class="law-abbr">OWiG</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Ordnungswidrigkeitengesetz</p>
+          <p class="law-desc">Bußgeldkatalog – Verstöße und Bußgeldhöhen</p>
         </div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title"><div class="acc-num">III</div><h4>Ablauf der Hauptverhandlung</h4></div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
+      <div class="law-body">
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 1–20</span> Verkehr und Fahrzeuge</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <table class="busseld-table">
+              <tr><th>§</th><th>Ordnungswidrigkeit</th><th class="amount">Bußgeld</th></tr>
+              <tr><td>§ 1</td><td>Fahren ohne gültigen Führerschein</td><td class="amount">2.500 €</td></tr>
+              <tr><td>§ 2</td><td>Fahren mit nicht zugelassenem Fahrzeug</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 3</td><td>Rotlichtverstoß</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 4</td><td>Geschwindigkeitsüberschreitung bis 20 km/h</td><td class="amount">200 €</td></tr>
+              <tr><td>§ 5</td><td>Geschwindigkeitsüberschreitung 21–40 km/h</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 6</td><td>Geschwindigkeitsüberschreitung über 40 km/h</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 7</td><td>Fahren unter Alkoholeinfluss (0,5–1,0 ‰)</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 8</td><td>Fahren unter starkem Alkoholeinfluss (über 1,0 ‰)</td><td class="amount">2.500 € + Führerscheinentzug</td></tr>
+              <tr><td>§ 9</td><td>Fahren unter Drogeneinfluss</td><td class="amount">2.500 € + Führerscheinentzug</td></tr>
+              <tr><td>§ 10</td><td>Unerlaubtes Entfernen vom Unfallort</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 11</td><td>Falschparken (allgemein)</td><td class="amount">150 €</td></tr>
+              <tr><td>§ 12</td><td>Falschparken auf Feuerwehrzufahrt / Behindertenparkplatz</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 13</td><td>Missachtung von Stoppzeichen der Polizei</td><td class="amount">750 €</td></tr>
+              <tr><td>§ 14</td><td>Überfahren einer gesperrten Strecke</td><td class="amount">400 €</td></tr>
+              <tr><td>§ 15</td><td>Fahrzeug nicht ordnungsgemäß gesichert / abgestellt</td><td class="amount">200 €</td></tr>
+              <tr><td>§ 16</td><td>Illegales Straßenrennen</td><td class="amount">5.000 € + Führerscheinentzug</td></tr>
+              <tr><td>§ 17</td><td>Missachtung der Vorfahrt</td><td class="amount">350 €</td></tr>
+              <tr><td>§ 18</td><td>Fahren ohne Sicherheitsgurt</td><td class="amount">100 €</td></tr>
+              <tr><td>§ 19</td><td>Nutzung des Mobiltelefons während der Fahrt</td><td class="amount">250 €</td></tr>
+              <tr><td>§ 20</td><td>Gefährliches Überholen</td><td class="amount">600 €</td></tr>
+            </table>
+          </div>
         </div>
-        <div class="accordion-body">
-          <ul>
-            <li><strong>1. Eröffnung:</strong> Richter eröffnet die Verhandlung, stellt Parteien vor, verliest Anklage.</li>
-            <li><strong>2. Aussage des Angeklagten:</strong> Der Angeklagte kann sich zur Anklage äußern oder schweigen.</li>
-            <li><strong>3. Beweisaufnahme:</strong> Vorlage aller Beweise — Zeugenaussagen, Fotos, Dokumente.</li>
-            <li><strong>4. Plädoyers:</strong> Staatsanwaltschaft und Verteidigung halten ihre Abschlussplädoyers.</li>
-            <li><strong>5. Urteilsverkündung:</strong> Der Richter verkündet das Urteil und begründet es.</li>
-          </ul>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 21–40</span> Öffentliche Ordnung und Verhalten</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <table class="busseld-table">
+              <tr><th>§</th><th>Ordnungswidrigkeit</th><th class="amount">Bußgeld</th></tr>
+              <tr><td>§ 21</td><td>Ruhestörung (Lärm in der Öffentlichkeit)</td><td class="amount">300 €</td></tr>
+              <tr><td>§ 22</td><td>Vermüllung öffentlicher Flächen</td><td class="amount">250 €</td></tr>
+              <tr><td>§ 23</td><td>Unerlaubte Nutzung öffentlicher Gebäude</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 24</td><td>Unangemessenes Verhalten gegenüber Behörden</td><td class="amount">200 €</td></tr>
+              <tr><td>§ 25</td><td>Verstoß gegen eine Platzverweisung</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 26</td><td>Bettelei in aggressiver Form</td><td class="amount">250 €</td></tr>
+              <tr><td>§ 27</td><td>Versperren von Rettungswegen</td><td class="amount">600 €</td></tr>
+              <tr><td>§ 28</td><td>Unerlaubtes Abbrennen von Feuerwerk</td><td class="amount">400 €</td></tr>
+              <tr><td>§ 29</td><td>Verstoß gegen das Rauchverbot in öffentlichen Gebäuden</td><td class="amount">150 €</td></tr>
+              <tr><td>§ 30</td><td>Betreten gesperrter Areale</td><td class="amount">300 €</td></tr>
+              <tr><td>§ 31</td><td>Verunreinigung von Gewässern</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 32</td><td>Unerlaubte Werbung / Plakatierung</td><td class="amount">200 €</td></tr>
+              <tr><td>§ 33</td><td>Verstoß gegen polizeiliche Absperrung</td><td class="amount">750 €</td></tr>
+              <tr><td>§ 34</td><td>Öffentliche Trunkenheit (unter 1,5 ‰)</td><td class="amount">250 €</td></tr>
+              <tr><td>§ 35</td><td>Unangemessene Bekleidung in öffentlichen Gebäuden</td><td class="amount">100 €</td></tr>
+              <tr><td>§ 36</td><td>Missachtung eines Hausverbots</td><td class="amount">400 €</td></tr>
+              <tr><td>§ 37</td><td>Unerlaubte Versammlung (Teilnahme)</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 38</td><td>Verstoß gegen Meldeauflagen</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 39</td><td>Tierquälerei (leichter Verstoß)</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 40</td><td>Nicht angeleinter gefährlicher Hund</td><td class="amount">350 €</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 41–60</span> Gewerbe, Handel und Gastronomie</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <table class="busseld-table">
+              <tr><th>§</th><th>Ordnungswidrigkeit</th><th class="amount">Bußgeld</th></tr>
+              <tr><td>§ 41</td><td>Betrieb eines Gewerbes ohne Genehmigung</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 42</td><td>Verstoß gegen Öffnungszeitenregelungen</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 43</td><td>Schwarzarbeit (Beschäftigter)</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 44</td><td>Schwarzarbeit (Auftraggeber)</td><td class="amount">5.000 €</td></tr>
+              <tr><td>§ 45</td><td>Verstoß gegen Hygienevorschriften</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 46</td><td>Betrieb einer Bar / eines Clubs ohne Schankgenehmigung</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 47</td><td>Abgabe von Alkohol an Minderjährige</td><td class="amount">2.500 €</td></tr>
+              <tr><td>§ 48</td><td>Falsche Preisangaben</td><td class="amount">750 €</td></tr>
+              <tr><td>§ 49</td><td>Handel mit nicht zugelassenen Produkten</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 50</td><td>Betrieb eines unerlaubten Pfandleihhauses</td><td class="amount">3.500 €</td></tr>
+              <tr><td>§ 51</td><td>Unerlaubter Straßenhandel</td><td class="amount">800 €</td></tr>
+              <tr><td>§ 52</td><td>Betrieb von Glücksspiel ohne Lizenz</td><td class="amount">5.000 €</td></tr>
+              <tr><td>§ 53</td><td>Verstoß gegen Arbeitszeitregelungen</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 54</td><td>Nichtführen von Kassenbüchern / Buchhaltung</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 55</td><td>Betrieb ohne Haftpflichtversicherung</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 56</td><td>Nichtaushang der Gewerbegenehmigung</td><td class="amount">250 €</td></tr>
+              <tr><td>§ 57</td><td>Unterlassung der Steuererklärung</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 58</td><td>Verstoß gegen Umweltschutzauflagen</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 59</td><td>Unerlaubte Lagerung gefährlicher Stoffe</td><td class="amount">4.000 €</td></tr>
+              <tr><td>§ 60</td><td>Betrieb eines Transportunternehmens ohne Lizenz</td><td class="amount">3.000 €</td></tr>
+            </table>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 61–86</span> Waffen, Sicherheit und sonstige Verstöße</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <table class="busseld-table">
+              <tr><th>§</th><th>Ordnungswidrigkeit</th><th class="amount">Bußgeld</th></tr>
+              <tr><td>§ 61</td><td>Tragen einer Waffe ohne gültige Genehmigung (Ersttäter)</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 62</td><td>Unsachgemäße Aufbewahrung von Waffen</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 63</td><td>Nichtmeldung eines Waffenverlustes</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 64</td><td>Tragen von Messern über der zulässigen Klingenlänge</td><td class="amount">750 €</td></tr>
+              <tr><td>§ 65</td><td>Verstoß gegen Waffenmitnahmeverbote in bestimmten Zonen</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 66</td><td>Schießen auf privatem Gelände ohne Genehmigung</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 67</td><td>Betrieb eines privaten Sicherheitsdienstes ohne Lizenz</td><td class="amount">5.000 €</td></tr>
+              <tr><td>§ 68</td><td>Nichtmeldung eines Unfalls mit Personenschaden</td><td class="amount">2.500 €</td></tr>
+              <tr><td>§ 69</td><td>Unterlassene Hilfeleistung (leichte Fälle)</td><td class="amount">1.000 €</td></tr>
+              <tr><td>§ 70</td><td>Verstoß gegen Datenschutzbestimmungen</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 71</td><td>Unerlaubte Videoüberwachung</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 72</td><td>Nichtvorlage von Dokumenten auf Anforderung der Behörde</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 73</td><td>Falsche Angaben gegenüber Behörden (kein Straftatbestand)</td><td class="amount">750 €</td></tr>
+              <tr><td>§ 74</td><td>Verstoß gegen Aufenthaltsauflagen</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 75</td><td>Unerlaubte Errichtung von Bauten</td><td class="amount">3.000 €</td></tr>
+              <tr><td>§ 76</td><td>Verstoß gegen Brandschutzvorschriften</td><td class="amount">2.500 €</td></tr>
+              <tr><td>§ 77</td><td>Betrieb eines Kraftfahrzeugs ohne Pflichtversicherung</td><td class="amount">2.000 €</td></tr>
+              <tr><td>§ 78</td><td>Nicht ordnungsgemäße Entsorgung von Sondermüll</td><td class="amount">1.500 €</td></tr>
+              <tr><td>§ 79</td><td>Verstoß gegen Jagd- oder Fischereierlaubnis</td><td class="amount">800 €</td></tr>
+              <tr><td>§ 80</td><td>Missbrauch des Notrufs</td><td class="amount">500 €</td></tr>
+              <tr><td>§ 81</td><td>Verweigern der Identitätsfeststellung</td><td class="amount">300 €</td></tr>
+              <tr><td>§ 82</td><td>Nichtzahlung von Bußgeldern innerhalb der Frist</td><td class="amount">+50% Aufschlag</td></tr>
+              <tr><td>§ 83</td><td>Wiederholte Ordnungswidrigkeiten (3. Verstoß gleicher Art)</td><td class="amount">Verdopplung</td></tr>
+              <tr><td>§ 84</td><td>Ordnungswidrigkeiten durch Amtsträger</td><td class="amount">+100% Aufschlag</td></tr>
+              <tr><td>§ 85</td><td>Ordnungswidrigkeiten von juristischen Personen</td><td class="amount">bis 50.000 €</td></tr>
+              <tr><td>§ 86</td><td>Einspruch gegen Bußgeldbescheid</td><td class="amount">Gerichtsentscheid</td></tr>
+            </table>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== JusG ===== -->
+    <div class="law-section" id="jusg">
+      <div class="law-section-header">
+        <div class="law-abbr">JusG</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Justizgesetz Berlin</p>
+          <p class="law-desc">Organisation und Befugnisse der Justiz des Staates Berlin</p>
         </div>
       </div>
-      <div class="accordion-item">
-        <div class="accordion-header">
-          <div class="acc-title"><div class="acc-num">IV</div><h4>Berufung &amp; Revision</h4></div>
-          <i class="fa fa-chevron-down acc-arrow"></i>
-        </div>
-        <div class="accordion-body">
-          <ul>
-            <li>Gegen jedes Urteil kann Berufung eingelegt werden — binnen 24 Stunden nach Verkündung.</li>
-            <li>Die Berufung ist schriftlich beim Justizministerium einzureichen.</li>
-            <li>Ein anderer Richter überprüft das Urteil auf Rechtsfehler und Verhältnismäßigkeit.</li>
-            <li>Die Berufungsinstanz kann das Urteil bestätigen, abmildern oder aufheben.</li>
-            <li>Gegen das Berufungsurteil kann Revision beim Justizminister eingelegt werden — dies ist die letzte Instanz.</li>
-          </ul>
+      <div class="law-body">
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 1–9</span> Aufbau und Aufgaben der Justiz Berlin</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 1 – Geltungsbereich</h4>
+              <p>Dieses Gesetz regelt den Aufbau und die Befugnisse der Justizorgane des Staates Berlin. Es gilt für alle natürlichen und juristischen Personen, die sich im Gebiet des Staates Berlin aufhalten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 2 – Justizministerium Berlin</h4>
+              <p>Das Justizministerium Berlin ist die oberste Justizbehörde des Staates. Es ist verantwortlich für die Gesetzgebung, Rechtspflege, die Aufsicht über die Gerichte und Strafverfolgungsbehörden sowie die Verwaltung des Strafvollzugs.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 3 – Gerichtsorganisation</h4>
+              <p>Die Gerichte des Staates Berlin gliedern sich in: Amtsgerichte (Zuständigkeit für Alltagsdelikte und Ordnungswidrigkeiten), Landgericht Berlin (Schwere Verbrechen und Berufungsinstanz), Oberstes Gericht Berlin (Revisionsinstanz und Verfassungsfragen).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 4 – Unabhängigkeit der Richter</h4>
+              <p>Richter sind in ihrer Rechtsprechung unabhängig und nur dem Gesetz unterworfen. Einflussnahme auf richterliche Entscheidungen durch Dritte ist strafbar.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 5 – Staatsanwaltschaft Berlin</h4>
+              <p>Die Staatsanwaltschaft Berlin ist eine weisungsgebundene Behörde unter der Aufsicht des Justizministeriums. Sie leitet das Ermittlungsverfahren und nimmt die Strafverfolgung wahr.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 6 – Rechtsanwaltschaft</h4>
+              <p>Rechtsanwälte sind unabhängige Organe der Rechtspflege. Sie sind zugelassen, wenn sie die staatliche Prüfung bestanden haben und beim Justizministerium registriert sind. Unregistrierte Personen dürfen keine Rechtsberatung gegen Entgelt anbieten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 7 – Justizwache / Gerichtsvollzieher</h4>
+              <p>Das Justizministerium unterhält eine Justizwache für die Sicherheit der Gerichtsgebäude und den Vollzug gerichtlicher Entscheidungen. Gerichtsvollzieher vollstrecken Urteile und Beschlüsse im Auftrag des Gerichts.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 8 – Strafvollzug</h4>
+              <p>Der Strafvollzug liegt in der Verantwortung des Justizministeriums Berlin. Freiheitsstrafen werden in der Berliner Strafvollzugsanstalt vollzogen. Ziel des Strafvollzugs ist die Resozialisierung der Verurteilten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 9 – Änderung dieses Gesetzes</h4>
+              <p>Änderungen des Justizgesetzes bedürfen der Zustimmung des Justizministers und werden durch Bekanntmachung im Amtsblatt Berlin in Kraft gesetzt.</p>
+            </div>
+          </div>
         </div>
       </div>
     </div>
+
+    <!-- ===== WaffG ===== -->
+    <div class="law-section" id="waffg">
+      <div class="law-section-header">
+        <div class="law-abbr">WaffG</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Waffengesetz</p>
+          <p class="law-desc">Regelungen zum Besitz, Erwerb und Tragen von Waffen</p>
+        </div>
+      </div>
+      <div class="law-body">
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">Allg.</span> Waffenschein und Genehmigungspflicht</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 1 – Waffenscheinpflicht</h4>
+              <p>Der Besitz und das Tragen von Schusswaffen, halbautomatischen Waffen und Pumpguns bedürfen eines gültigen Waffenscheins, ausgestellt vom Justizministerium Berlin oder einer beauftragten Behörde.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 2 – Erlaubnisfreie Waffen</h4>
+              <p>Folgende Waffen können ohne Waffenschein getragen werden, soweit sie offen geführt werden und die Person volljährig ist: Messer bis 12 cm Klingenlänge, Pfefferspray (zivile Ausführung).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 3 – Voraussetzungen für den Waffenschein</h4>
+              <ul>
+                <li>Mindestalter 18 Jahre</li>
+                <li>Nachweis der Zuverlässigkeit (keine Vorstrafen in den letzten 5 Jahren)</li>
+                <li>Nachweis der Sachkunde (bestandene Prüfung)</li>
+                <li>Nachweis eines berechtigten Bedürfnisses (z.B. Beruf, Sport, Sammlung)</li>
+                <li>Zahlung der Verwaltungsgebühr</li>
+              </ul>
+            </div>
+            <div class="para-block">
+              <h4>§ 4 – Waffenregister</h4>
+              <p>Alle zugelassenen Schusswaffen sind in einem zentralen Waffenregister zu führen. Jede Übertragung, jeder Erwerb und jeder Verlust sind unverzüglich zu melden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 5 – Verbotene Waffen</h4>
+              <p>Ohne Ausnahmegenehmigung des Justizministeriums verboten sind: vollautomatische Waffen, Schalldämpfer, Panzerbrechende Munition, Kriegswaffen jeder Art, sowie biologische und chemische Kampfstoffe.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 6 – Aufbewahrung</h4>
+              <p>Erlaubnispflichtige Waffen sind in einem verschlossenen Waffenschrank aufzubewahren. Munition ist getrennt von der Waffe aufzubewahren. Unbefugten Personen darf kein Zugang gewährt werden.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 7 – Waffenhandel</h4>
+              <p>Der gewerbliche Waffenhandel bedarf einer besonderen Genehmigung des Justizministeriums. Der Waffenhändler ist verpflichtet, jeden Verkauf im Waffenregister zu erfassen.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 8 – Mitnahme in öffentliche Gebäude</h4>
+              <p>Das Mitführen von Waffen in Gerichtsgebäude, Behörden, Schulen, Krankenhäuser und Gotteshäuser ist verboten. Ausnahmen gelten nur für Sicherheitspersonal und Polizeibeamte.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 9 – Entzug des Waffenscheins</h4>
+              <p>Der Waffenschein wird entzogen, wenn die Voraussetzungen nicht mehr erfüllt sind, wenn die Waffe missbräuchlich eingesetzt wurde oder wenn der Inhaber strafrechtlich verurteilt wird.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 10 – Strafen bei Verstößen</h4>
+              <p>Das Tragen einer Schusswaffe ohne Waffenschein ist eine Straftat nach StGB. Das unerlaubte Tragen erlaubnispflichtiger Waffen wird mit Freiheitsstrafe bis zu 3 Jahren oder Geldstrafe bestraft. Bei schwerem Verstoß oder Bandenzugehörigkeit erhöht sich der Strafrahmen auf bis zu 5 Jahre.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- ===== BtMG ===== -->
+    <div class="law-section" id="btmg">
+      <div class="law-section-header">
+        <div class="law-abbr">BtMG</div>
+        <div class="law-title-block">
+          <p class="law-full-name">Betäubungsmittelgesetz</p>
+          <p class="law-desc">Umgang mit Betäubungsmitteln, Strafrahmen nach Substanz und Menge</p>
+        </div>
+      </div>
+      <div class="law-body">
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 1–7</span> Grundlagen und Betäubungsmittelkategorien</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 1 – Anwendungsbereich</h4>
+              <p>Dieses Gesetz regelt den Umgang mit Betäubungsmitteln im Staat Berlin. Es gilt für Besitz, Handel, Herstellung, Einfuhr und Abgabe von Betäubungsmitteln.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 2 – Betäubungsmittel der Klasse A (Leichte Drogen)</h4>
+              <p>Zu Klasse A gehören: Cannabis (Marihuana, Haschisch), Psychoaktive Pilze, Khat.</p>
+              <ul>
+                <li>Besitz zum Eigenkonsum (bis 15g): Bußgeld 500 €</li>
+                <li>Besitz mit Handelsabsicht (über 15g bis 100g): 6 Monate bis 2 Jahre Freiheitsstrafe</li>
+                <li>Handel und Verkauf: 1 bis 5 Jahre Freiheitsstrafe</li>
+                <li>Gewerbsmäßiger Handel: 3 bis 8 Jahre Freiheitsstrafe</li>
+              </ul>
+            </div>
+            <div class="para-block">
+              <h4>§ 3 – Betäubungsmittel der Klasse B (Mittelschwere Drogen)</h4>
+              <p>Zu Klasse B gehören: Kokain, Amphetamine (Speed), MDMA (Ecstasy), synthetische Cannabinoide.</p>
+              <ul>
+                <li>Besitz zum Eigenkonsum (bis 5g): Bußgeld 1.000 € + Entzugsmaßnahme</li>
+                <li>Besitz mit Handelsabsicht (über 5g bis 50g): 1 bis 3 Jahre Freiheitsstrafe</li>
+                <li>Handel und Verkauf: 3 bis 8 Jahre Freiheitsstrafe</li>
+                <li>Gewerbsmäßiger Handel: 5 bis 12 Jahre Freiheitsstrafe</li>
+              </ul>
+            </div>
+            <div class="para-block">
+              <h4>§ 4 – Betäubungsmittel der Klasse C (Schwere Drogen)</h4>
+              <p>Zu Klasse C gehören: Heroin, Methamphetamin (Crystal Meth), LSD, Fentanyl und andere Opiate.</p>
+              <ul>
+                <li>Besitz jeder Menge: 1 bis 5 Jahre Freiheitsstrafe</li>
+                <li>Handel und Verkauf: 5 bis 15 Jahre Freiheitsstrafe</li>
+                <li>Gewerbsmäßiger Handel oder Bandenkriminalität: 8 bis 20 Jahre Freiheitsstrafe</li>
+                <li>Einfuhr in erheblichen Mengen: 10 bis 25 Jahre Freiheitsstrafe</li>
+              </ul>
+            </div>
+            <div class="para-block">
+              <h4>§ 5 – Herstellung von Betäubungsmitteln</h4>
+              <p>Die Herstellung von Betäubungsmitteln ohne staatliche Genehmigung ist verboten. Die Strafe richtet sich nach der herzustellenden Substanzklasse und der produzierten Menge, mindestens jedoch nach den Handelsparagraphen der jeweiligen Klasse.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 6 – Strafschärfende Umstände</h4>
+              <p>Strafschärfend wirkt sich aus: Bandenmäßige Begehung (+50% Strafrahmen), Einsatz von Waffen bei Drogendelikten (+3 Jahre Mindeststrafe), Abgabe an Minderjährige (Strafrahmen der nächsthöheren Klasse), Abgabe in der Nähe von Schulen oder Jugendzentren (Strafrahmen der nächsthöheren Klasse).</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 7 – Strafmildernde Umstände / Therapie statt Strafe</h4>
+              <p>Bei Ersttätern und Abhängigen kann das Gericht von Strafe absehen oder die Strafe mildern, wenn sich der Täter zu einer Drogentherapie verpflichtet und diese erfolgreich abschließt. Therapie und Behandlung gelten als prioritär vor Bestrafung bei suchtbedingten Delikten.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="law-accordion-item">
+          <button class="law-accordion-btn" onclick="toggleLaw(this)">
+            <span><span class="section-badge">§§ 601–605</span> Besondere Bestimmungen für Berlin</span>
+            <i class="fa fa-chevron-down icon"></i>
+          </button>
+          <div class="law-accordion-content">
+            <div class="para-block">
+              <h4>§ 601 – Drogenfreie Zonen</h4>
+              <p>Das Justizministerium Berlin kann bestimmte Bereiche zu drogenfreien Zonen erklären. In diesen Zonen wird auch der Besitz von Klasse-A-Substanzen als Straftat, nicht als Ordnungswidrigkeit, verfolgt.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 602 – Meldepflicht für Apotheken und Ärzte</h4>
+              <p>Apotheken und Ärzte, die verschreibungspflichtige Betäubungsmittel ausgeben, sind zur Dokumentation und Meldung an das Gesundheitsamt verpflichtet.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 603 – Informantenschutz</h4>
+              <p>Personen, die zur Aufklärung von Drogenhandel beitragen und als Informanten tätig sind, können unter bestimmten Voraussetzungen Straffreiheit oder erhebliche Strafmilderung erhalten.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 604 – Einziehung von Erlösen</h4>
+              <p>Alle durch Drogenhandel erzielten Einnahmen werden vollständig eingezogen. Das gilt auch für indirekte Erlöse, die durch Geldwäsche in legale Unternehmungen eingeflossen sind.</p>
+            </div>
+            <div class="para-block">
+              <h4>§ 605 – Prävention und Aufklärung</h4>
+              <p>Das Justizministerium Berlin ist verpflichtet, in Zusammenarbeit mit Schulen, Jugendzentren und sozialen Einrichtungen Präventionskampagnen zur Drogenaufklärung durchzuführen und finanziell zu unterstützen.</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== Overview cards ===== -->
+    <div class="section-header" style="margin-top:3rem;">
+      <h2 class="section-title">Rechtsübersicht</h2>
+      <p class="section-sub">Alle gültigen Gesetze des Staates Berlin auf einen Blick</p>
+    </div>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-gavel"></i></div>
+        <h3 class="card-title">StGB</h3>
+        <p class="card-text">Strafgesetzbuch – Regelt alle strafbaren Handlungen von Körperverletzung bis hin zu schweren Verbrechen wie Mord oder organisierter Kriminalität.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-scale-balanced"></i></div>
+        <h3 class="card-title">StPO</h3>
+        <p class="card-text">Strafprozessordnung – Legt alle Verfahrensschritte fest: Ermittlung, Festnahme, Anklage, Hauptverhandlung und Rechtsmittel.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-triangle-exclamation"></i></div>
+        <h3 class="card-title">OWiG</h3>
+        <p class="card-text">Ordnungswidrigkeitengesetz – Vollständiger Bußgeldkatalog für Verstöße im Straßenverkehr, Gewerbe, Gastronomie und öffentlicher Ordnung.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-landmark"></i></div>
+        <h3 class="card-title">JusG</h3>
+        <p class="card-text">Justizgesetz Berlin – Regelt Aufbau und Befugnisse aller Justizorgane: Gerichte, Staatsanwaltschaft, Rechtsanwälte und Strafvollzug.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-shield-halved"></i></div>
+        <h3 class="card-title">WaffG</h3>
+        <p class="card-text">Waffengesetz – Waffenscheinpflicht, erlaubnisfreie Waffen, verbotene Waffen, Aufbewahrungsvorschriften und Strafrahmen bei Verstößen.</p>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-capsules"></i></div>
+        <h3 class="card-title">BtMG</h3>
+        <p class="card-text">Betäubungsmittelgesetz – Drei Drogenklassen mit gestaffelten Strafen nach Menge und Verwendung. Besondere Berliner Regelungen für drogenfreie Zonen.</p>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -340,52 +1255,67 @@
 <footer class="footer">
   <div class="container">
     <div class="footer-grid">
-      <div>
+      <div class="footer-brand">
         <div class="footer-logo">
-          <div class="footer-logo-icon">⚖</div>
-          <div class="footer-logo-text">
-            <span class="footer-logo-title">Justizministerium</span>
-            <span class="footer-logo-sub">Staat San Andreas</span>
+          <div class="logo-icon">⚖</div>
+          <div class="logo-text">
+            <span class="logo-title">Justizministerium</span>
+            <span class="logo-sub">Staat Berlin</span>
           </div>
         </div>
-        <p class="footer-desc">Die oberste Justizbehörde des Staates San Andreas — für Recht, Ordnung und Gerechtigkeit.</p>
-        <div class="social-links">
-          <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
-        </div>
+        <p class="footer-desc">Das Justizministerium Berlin ist die oberste Justizbehörde des Staates. Wir gewährleisten Recht, Ordnung und Gerechtigkeit.</p>
       </div>
       <div class="footer-col">
         <h4>Navigation</h4>
-        <div class="footer-links">
-          <a href="index.html">Startseite</a>
-          <a href="ueber-uns.html">Über uns</a>
-          <a href="gesetze.html">Gesetze</a>
-          <a href="gerichtssystem.html">Gerichtssystem</a>
-          <a href="bewerbungen.html">Bewerbungen</a>
-        </div>
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="gesetze.html">Gesetze</a></li>
+          <li><a href="gerichtssystem.html">Gerichtssystem</a></li>
+        </ul>
       </div>
       <div class="footer-col">
-        <h4>Gesetze</h4>
-        <div class="footer-links">
-          <a href="gesetze.html#strafkatalog">Strafkatalog</a>
-          <a href="gesetze.html#gesetzbuch">Gesetzbuch (StGB)</a>
-          <a href="gesetze.html#verfahren">Verfahrensordnung</a>
-        </div>
+        <h4>Service</h4>
+        <ul>
+          <li><a href="bewerbungen.html">Bewerbungen</a></li>
+          <li><a href="buerger-service.html">Bürger Service</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+          <li><a href="https://discord.gg/ejQ8KypUR3" target="_blank">Discord</a></li>
+        </ul>
       </div>
       <div class="footer-col">
         <h4>Kontakt</h4>
-        <div class="footer-links">
-          <a href="kontakt.html">Ansprechpartner</a>
-          <a href="https://discord.gg/ejQ8KypUR3" target="_blank">Discord Server</a>
-        </div>
+        <ul>
+          <li><i class="fab fa-discord"></i> <a href="https://discord.gg/ejQ8KypUR3" target="_blank">Discord Server</a></li>
+          <li><i class="fa fa-gavel"></i> Amtsgericht Berlin</li>
+          <li><i class="fa fa-landmark"></i> Landgericht Berlin</li>
+        </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>© 2026 <span>Justizministerium San Andreas</span> · GTA V / FiveM Roleplay</p>
+      <p>&copy; 2025 Justizministerium Staat Berlin. Alle Rechte vorbehalten. | FiveM Roleplay Server</p>
     </div>
   </div>
 </footer>
 
-<div class="scroll-top" id="scrollTop"><i class="fa fa-arrow-up"></i></div>
 <script src="main.js"></script>
+<script>
+  function toggleLaw(btn) {
+    const content = btn.nextElementSibling;
+    const isOpen = content.classList.contains('open');
+    btn.classList.toggle('active', !isOpen);
+    content.classList.toggle('open', !isOpen);
+  }
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(a => {
+    a.addEventListener('click', e => {
+      const target = document.querySelector(a.getAttribute('href'));
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    });
+  });
+</script>
 </body>
 </html>
