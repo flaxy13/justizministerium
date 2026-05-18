@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bürger Service – Justizministerium San Andreas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">⚖</div>
+      <div class="logo-text">
+        <span class="logo-title">Justizministerium</span>
+        <span class="logo-sub">Staat San Andreas</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html"            class="nav-link"><i class="fa fa-house"></i> Startseite</a>
+      <a href="ueber-uns.html"        class="nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+      <a href="gesetze.html"          class="nav-link"><i class="fa fa-book"></i> Gesetze</a>
+      <a href="gerichtssystem.html"   class="nav-link"><i class="fa fa-gavel"></i> Gericht</a>
+      <a href="bewerbungen.html"      class="nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+      <a href="buerger-service.html"  class="nav-link"><i class="fa fa-people-group"></i> Bürger</a>
+      <a href="kontakt.html"          class="nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord">
+        <i class="fab fa-discord"></i><span class="btn-text">Discord</span>
+      </a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html"           class="mobile-nav-link"><i class="fa fa-house"></i> Startseite</a>
+  <a href="ueber-uns.html"       class="mobile-nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+  <a href="gesetze.html"         class="mobile-nav-link"><i class="fa fa-book"></i> Gesetze</a>
+  <a href="gerichtssystem.html"  class="mobile-nav-link"><i class="fa fa-gavel"></i> Gerichtssystem</a>
+  <a href="bewerbungen.html"     class="mobile-nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+  <a href="buerger-service.html" class="mobile-nav-link"><i class="fa fa-people-group"></i> Bürger Service</a>
+  <a href="kontakt.html"         class="mobile-nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+  <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord mt-8"><i class="fab fa-discord"></i> Discord</a>
+</nav>
+
+<div class="page-header">
+  <div class="container page-header-content">
+    <div class="breadcrumb">
+      <a href="index.html">Startseite</a>
+      <span class="sep"><i class="fa fa-chevron-right"></i></span>
+      <span class="current">Bürger Service</span>
+    </div>
+    <h1>Bürger Service</h1>
+    <p>Das Justizministerium steht jedem Bürger zur Seite — Anzeigen, Rechtsberatung und Beschwerden.</p>
+  </div>
+  <div class="page-header-border"></div>
+</div>
+
+<!-- ========== ÜBERSICHT ========== -->
+<section class="section-sm bg-gray">
+  <div class="container">
+    <div class="grid-3">
+      <a href="#anzeige" class="service-card" style="cursor:pointer;display:block;">
+        <div class="service-icon"><i class="fa fa-file-circle-plus"></i></div>
+        <h3>Anzeige erstatten</h3>
+        <p style="margin-top:12px;font-size:.875rem;color:var(--text-light);">Strafanzeige gegen eine Person einreichen. Wir leiten die Anzeige an die zuständige Staatsanwaltschaft weiter.</p>
+        <div style="margin-top:20px;color:var(--gold);font-size:.85rem;font-weight:600;">Zum Formular <i class="fa fa-arrow-right"></i></div>
+      </a>
+      <a href="#anwalt" class="service-card" style="cursor:pointer;display:block;">
+        <div class="service-icon"><i class="fa fa-user-tie"></i></div>
+        <h3>Anwalt anfordern</h3>
+        <p style="margin-top:12px;font-size:.875rem;color:var(--text-light);">Benötigen Sie rechtlichen Beistand? Wir vermitteln Ihnen einen zugelassenen Anwalt oder Pflichtverteidiger.</p>
+        <div style="margin-top:20px;color:var(--gold);font-size:.85rem;font-weight:600;">Zum Formular <i class="fa fa-arrow-right"></i></div>
+      </a>
+      <a href="#beschwerde" class="service-card" style="cursor:pointer;display:block;">
+        <div class="service-icon"><i class="fa fa-comment-dots"></i></div>
+        <h3>Beschwerde einreichen</h3>
+        <p style="margin-top:12px;font-size:.875rem;color:var(--text-light);">Beschwerde über ein Urteil, ein Verfahren oder das Verhalten eines Justizmitarbeiters einreichen.</p>
+        <div style="margin-top:20px;color:var(--gold);font-size:.85rem;font-weight:600;">Zum Formular <i class="fa fa-arrow-right"></i></div>
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ANZEIGE ========== -->
+<section class="section" id="anzeige">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Service 1</div>
+      <h2><i class="fa fa-file-circle-plus" style="color:var(--gold);margin-right:12px;"></i>Strafanzeige erstatten</h2>
+      <div class="divider-gold"></div>
+      <p>Erstatten Sie eine offizielle Anzeige gegen eine Person. Ihre Anzeige wird von der Staatsanwaltschaft geprüft und weiterbearbeitet.</p>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="alert alert-success" id="anzeige-success">
+        <i class="fa fa-circle-check"></i>
+        <div><strong>Anzeige erfolgreich eingereicht!</strong><br>Ihre Anzeige wurde registriert und wird von der Staatsanwaltschaft geprüft. Sie erhalten Rückmeldung über Discord.</div>
+      </div>
+      <div class="form-card">
+        <form id="anzeige-form" novalidate>
+          <div class="form-section-title"><i class="fa fa-user" style="color:var(--gold);margin-right:8px;"></i>Ihre Angaben</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ihr Name (IC) <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="Vorname Nachname" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Discord-Tag <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="nutzer#0000" required>
+            </div>
+          </div>
+
+          <div class="form-section-title mt-24"><i class="fa fa-person-circle-exclamation" style="color:var(--gold);margin-right:8px;"></i>Angaben zur beschuldigten Person</div>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Name der beschuldigten Person (IC) <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="Soweit bekannt" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Tatzeit (ungefähr) <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="z. B. 15.05.2026, ca. 20:00 Uhr" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Tatort <span class="req">*</span></label>
+            <input type="text" class="form-control" placeholder="z. B. Grove Street, Los Santos" required>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Beschreibung der Tat <span class="req">*</span></label>
+            <textarea class="form-control" rows="5" placeholder="Beschreiben Sie den Vorfall so detailliert wie möglich. Was ist passiert? Welche Verletzungen / Schäden entstanden?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Zeugen (falls vorhanden)</label>
+            <input type="text" class="form-control" placeholder="Namen der Zeugen, soweit bekannt">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Beweise (Screenshots, Videos)</label>
+            <input type="text" class="form-control" placeholder="Links zu Beweismitteln (Imgur, Discord, etc.)">
+            <div class="form-hint">Falls vorhanden — Beweise erhöhen die Chance auf Anklageerhebung deutlich.</div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg mt-8">
+            <i class="fa fa-paper-plane"></i> Anzeige absenden
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== ANWALT ========== -->
+<section class="section bg-gray" id="anwalt">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Service 2</div>
+      <h2><i class="fa fa-user-tie" style="color:var(--gold);margin-right:12px;"></i>Anwalt anfordern</h2>
+      <div class="divider-gold"></div>
+      <p>Ob Verhör, Anklage oder Gerichtsverfahren — Sie haben das Recht auf einen Anwalt. Wir vermitteln Ihnen schnellstmöglich Rechtsbeistand.</p>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="info-box info-box-gold mb-24">
+        <i class="fa fa-shield-halved"></i>
+        <div class="info-box-content">
+          <h5>Ihr Recht auf einen Anwalt</h5>
+          <p style="font-size:.875rem;">Jeder Bürger hat das Recht auf rechtlichen Beistand — unabhängig von seiner finanziellen Situation. Können Sie keinen Anwalt finanzieren, stellen wir Ihnen einen kostenlosen Pflichtverteidiger.</p>
+        </div>
+      </div>
+
+      <div class="alert alert-success" id="anwalt-success">
+        <i class="fa fa-circle-check"></i>
+        <div><strong>Anfrage erfolgreich eingereicht!</strong><br>Wir werden Ihnen schnellstmöglich einen verfügbaren Anwalt zuweisen. Sie werden über Discord kontaktiert.</div>
+      </div>
+
+      <div class="form-card">
+        <form id="anwalt-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ihr Name (IC) <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="Vorname Nachname" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Discord-Tag <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="nutzer#0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Art des Beistands <span class="req">*</span></label>
+            <select class="form-control" required>
+              <option value="">— Bitte wählen —</option>
+              <option>Verhör / Polizeibefragung</option>
+              <option>Laufendes Gerichtsverfahren</option>
+              <option>Geplantes Gerichtsverfahren</option>
+              <option>Allgemeine Rechtsberatung</option>
+              <option>Pflichtverteidiger (kostenlos)</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Kurze Beschreibung der Situation <span class="req">*</span></label>
+            <textarea class="form-control" rows="4" placeholder="Beschreiben Sie kurz, weswegen Sie einen Anwalt benötigen..." required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Dringlichkeit</label>
+            <select class="form-control">
+              <option>Normal (Antwort innerhalb 24h)</option>
+              <option>Dringend (aktives Verfahren)</option>
+              <option>Sofort (Verhör läuft gerade)</option>
+            </select>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg mt-8">
+            <i class="fa fa-user-tie"></i> Anwalt anfordern
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BESCHWERDE ========== -->
+<section class="section" id="beschwerde">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Service 3</div>
+      <h2><i class="fa fa-comment-dots" style="color:var(--gold);margin-right:12px;"></i>Beschwerde einreichen</h2>
+      <div class="divider-gold"></div>
+      <p>Sie haben das Recht, sich gegen Urteile, Verfahren oder das Verhalten von Justizmitarbeitern zu beschweren. Jede Beschwerde wird ernst genommen.</p>
+    </div>
+
+    <div style="max-width:720px;margin:0 auto;">
+      <div class="alert alert-success" id="beschwerde-success">
+        <i class="fa fa-circle-check"></i>
+        <div><strong>Beschwerde eingereicht!</strong><br>Ihre Beschwerde wurde registriert und wird vom Justizministerium geprüft. Wir melden uns innerhalb von 72 Stunden über Discord.</div>
+      </div>
+
+      <div class="form-card">
+        <form id="beschwerde-form" novalidate>
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label">Ihr Name (IC) <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="Vorname Nachname" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label">Discord-Tag <span class="req">*</span></label>
+              <input type="text" class="form-control" placeholder="nutzer#0000" required>
+            </div>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Art der Beschwerde <span class="req">*</span></label>
+            <select class="form-control" required>
+              <option value="">— Bitte wählen —</option>
+              <option>Beschwerde gegen ein Urteil (Berufung)</option>
+              <option>Beschwerde über Verfahrensführung</option>
+              <option>Beschwerde über Richter / Staatsanwalt</option>
+              <option>Beschwerde über Rechtsanwalt</option>
+              <option>Sonstiges</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Aktenzeichen / Verfahren (falls bekannt)</label>
+            <input type="text" class="form-control" placeholder="z. B. SA-2026-0047">
+          </div>
+          <div class="form-group">
+            <label class="form-label">Detaillierte Beschreibung <span class="req">*</span></label>
+            <textarea class="form-control" rows="5" placeholder="Beschreiben Sie Ihre Beschwerde so genau wie möglich. Was ist passiert? Warum erachten Sie dies als ungerechtfertigt?" required></textarea>
+          </div>
+          <div class="form-group">
+            <label class="form-label">Beweise / Belege</label>
+            <input type="text" class="form-control" placeholder="Links zu Screenshots oder anderen Belegen">
+          </div>
+          <div class="info-box info-box-blue mb-24">
+            <i class="fa fa-circle-info"></i>
+            <div class="info-box-content">
+              <p style="font-size:.85rem;">Beschwerden gegen Urteile müssen binnen <strong>24 Stunden</strong> nach Verkündung eingereicht werden, um als Berufung zu gelten.</p>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full btn-lg">
+            <i class="fa fa-paper-plane"></i> Beschwerde absenden
+          </button>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">⚖</div>
+          <div class="footer-logo-text">
+            <span class="footer-logo-title">Justizministerium</span>
+            <span class="footer-logo-sub">Staat San Andreas</span>
+          </div>
+        </div>
+        <p class="footer-desc">Die oberste Justizbehörde des Staates San Andreas.</p>
+        <div class="social-links">
+          <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html">Startseite</a>
+          <a href="ueber-uns.html">Über uns</a>
+          <a href="gesetze.html">Gesetze</a>
+          <a href="gerichtssystem.html">Gerichtssystem</a>
+          <a href="bewerbungen.html">Bewerbungen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Bürger Service</h4>
+        <div class="footer-links">
+          <a href="#anzeige">Anzeige erstatten</a>
+          <a href="#anwalt">Anwalt anfordern</a>
+          <a href="#beschwerde">Beschwerde einreichen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-links">
+          <a href="kontakt.html">Ansprechpartner</a>
+          <a href="https://discord.gg/ejQ8KypUR3" target="_blank">Discord Server</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>Justizministerium San Andreas</span> · GTA V / FiveM Roleplay</p>
+    </div>
+  </div>
+</footer>
+
+<div class="scroll-top" id="scrollTop"><i class="fa fa-arrow-up"></i></div>
+<script src="js/main.js"></script>
+</body>
+</html>

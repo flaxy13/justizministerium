@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerichtssystem – Justizministerium San Andreas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+</head>
+<body>
+
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <div class="logo-icon">⚖</div>
+      <div class="logo-text">
+        <span class="logo-title">Justizministerium</span>
+        <span class="logo-sub">Staat San Andreas</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html"            class="nav-link"><i class="fa fa-house"></i> Startseite</a>
+      <a href="ueber-uns.html"        class="nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+      <a href="gesetze.html"          class="nav-link"><i class="fa fa-book"></i> Gesetze</a>
+      <a href="gerichtssystem.html"   class="nav-link"><i class="fa fa-gavel"></i> Gericht</a>
+      <a href="bewerbungen.html"      class="nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+      <a href="buerger-service.html"  class="nav-link"><i class="fa fa-people-group"></i> Bürger</a>
+      <a href="kontakt.html"          class="nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord">
+        <i class="fab fa-discord"></i><span class="btn-text">Discord</span>
+      </a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html"           class="mobile-nav-link"><i class="fa fa-house"></i> Startseite</a>
+  <a href="ueber-uns.html"       class="mobile-nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+  <a href="gesetze.html"         class="mobile-nav-link"><i class="fa fa-book"></i> Gesetze</a>
+  <a href="gerichtssystem.html"  class="mobile-nav-link"><i class="fa fa-gavel"></i> Gerichtssystem</a>
+  <a href="bewerbungen.html"     class="mobile-nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+  <a href="buerger-service.html" class="mobile-nav-link"><i class="fa fa-people-group"></i> Bürger Service</a>
+  <a href="kontakt.html"         class="mobile-nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+  <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord mt-8"><i class="fab fa-discord"></i> Discord</a>
+</nav>
+
+<div class="page-header">
+  <div class="container page-header-content">
+    <div class="breadcrumb">
+      <a href="index.html">Startseite</a>
+      <span class="sep"><i class="fa fa-chevron-right"></i></span>
+      <span class="current">Gerichtssystem</span>
+    </div>
+    <h1>Das Gerichtssystem</h1>
+    <p>Ablauf von Gerichtsverfahren, Rechte der Bürger und ein Beispielverfahren zum besseren Verständnis.</p>
+  </div>
+  <div class="page-header-border"></div>
+</div>
+
+<!-- ========== ABLAUF VERFAHREN ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Schritt für Schritt</div>
+      <h2>Ablauf eines Gerichtsverfahrens</h2>
+      <div class="divider-gold"></div>
+      <p>Von der Anklage bis zum Urteil — ein transparenter Überblick über den gesamten Prozess.</p>
+    </div>
+
+    <div class="grid-2" style="gap:64px;align-items:start;">
+      <div class="timeline">
+        <div class="timeline-item">
+          <div class="timeline-dot">1</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-file-circle-plus" style="color:var(--gold);margin-right:8px;"></i>Anzeige &amp; Ermittlung</h4>
+            <p>Ein Bürger erstattet Anzeige oder die Polizei leitet Ermittlungen ein. Beweise werden gesichert, Zeugen befragt und ein Ermittlungsbericht erstellt.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">2</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-scale-balanced" style="color:var(--gold);margin-right:8px;"></i>Anklageerhebung</h4>
+            <p>Die Staatsanwaltschaft prüft den Ermittlungsbericht und entscheidet, ob Anklage erhoben wird. Die Anklageschrift wird beim zuständigen Gericht eingereicht.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">3</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-calendar-check" style="color:var(--gold);margin-right:8px;"></i>Terminvergabe &amp; Ladung</h4>
+            <p>Das Gericht bestimmt einen Verhandlungstermin. Alle Beteiligten — Angeklagter, Staatsanwalt, Verteidiger und Zeugen — werden offiziell geladen.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">4</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-gavel" style="color:var(--gold);margin-right:8px;"></i>Hauptverhandlung</h4>
+            <p>Der Richter leitet die Verhandlung. Beide Seiten präsentieren ihre Argumente, Zeugen werden vernommen und Beweise vorgelegt.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">5</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-scroll" style="color:var(--gold);margin-right:8px;"></i>Plädoyers</h4>
+            <p>Die Staatsanwaltschaft fordert eine Strafe, die Verteidigung plädiert auf Freispruch oder Strafminderung. Beide Seiten fassen ihre Argumentation zusammen.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">6</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-stamp" style="color:var(--gold);margin-right:8px;"></i>Urteilsverkündung</h4>
+            <p>Der Richter verkündet das Urteil und begründet es ausführlich. Das Urteil wird schriftlich festgehalten und allen Beteiligten zugestellt.</p>
+          </div>
+        </div>
+        <div class="timeline-item">
+          <div class="timeline-dot">7</div>
+          <div class="timeline-content">
+            <h4><i class="fa fa-rotate-left" style="color:var(--gold);margin-right:8px;"></i>Berufung (optional)</h4>
+            <p>Binnen 24 Stunden kann Berufung eingelegt werden. Ein anderer Richter überprüft das Urteil auf Rechtmäßigkeit und Verhältnismäßigkeit.</p>
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <div class="info-box info-box-gold mb-24">
+          <i class="fa fa-lightbulb"></i>
+          <div class="info-box-content">
+            <h5>Wichtig zu wissen</h5>
+            <p>Ein Verfahren sollte nicht länger als 30 Minuten dauern. Alle Beteiligten sind zur Sachlichkeit verpflichtet.</p>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:var(--radius-lg);padding:28px;border:1px solid var(--gray);margin-bottom:24px;">
+          <h4 style="margin-bottom:16px;"><i class="fa fa-hourglass-half" style="color:var(--gold);margin-right:10px;"></i>Fristen im Überblick</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray);">
+              <span style="font-size:.875rem;font-weight:600;">Anklageeinreichung nach Festnahme</span>
+              <span class="badge badge-blue">max. 48 Std.</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray);">
+              <span style="font-size:.875rem;font-weight:600;">Terminvergabe nach Anklage</span>
+              <span class="badge badge-blue">max. 72 Std.</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;border-bottom:1px solid var(--gray);">
+              <span style="font-size:.875rem;font-weight:600;">Maximale Verhandlungsdauer</span>
+              <span class="badge badge-blue">30 Min.</span>
+            </div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:10px 0;">
+              <span style="font-size:.875rem;font-weight:600;">Berufungsfrist nach Urteil</span>
+              <span class="badge badge-gold">24 Std.</span>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:linear-gradient(135deg,var(--primary),var(--primary-light));border-radius:var(--radius-lg);padding:28px;color:var(--white);">
+          <h4 style="color:var(--gold);margin-bottom:16px;"><i class="fa fa-landmark"></i> Gerichtsebenen</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="padding:12px;background:rgba(255,255,255,.06);border-radius:var(--radius);border-left:3px solid var(--gold);">
+              <div style="font-weight:700;font-size:.9rem;">Amtsgericht</div>
+              <div style="font-size:.8rem;color:rgba(255,255,255,.55);margin-top:3px;">Leichte und mittlere Vergehen · Erste Instanz</div>
+            </div>
+            <div style="padding:12px;background:rgba(255,255,255,.06);border-radius:var(--radius);border-left:3px solid var(--gold);">
+              <div style="font-weight:700;font-size:.9rem;">Landgericht</div>
+              <div style="font-size:.8rem;color:rgba(255,255,255,.55);margin-top:3px;">Schwere Verbrechen · Berufungsinstanz</div>
+            </div>
+            <div style="padding:12px;background:rgba(255,255,255,.06);border-radius:var(--radius);border-left:3px solid var(--gold);">
+              <div style="font-weight:700;font-size:.9rem;">Justizministerium</div>
+              <div style="font-size:.8rem;color:rgba(255,255,255,.55);margin-top:3px;">Letzte Revisionsinstanz · Ministerentscheid</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BÜRGERRECHTE ========== -->
+<section class="section bg-gray">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Grundrechte</div>
+      <h2>Rechte jedes Bürgers</h2>
+      <div class="divider-gold"></div>
+      <p>Diese Rechte stehen jedem Bürger des Staates San Andreas zu — sie können nicht entzogen werden.</p>
+    </div>
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-user-shield"></i></div>
+        <h4>Recht zu schweigen</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Kein Bürger ist verpflichtet, sich selbst zu belasten. Sie können jede Aussage verweigern — ohne dass dies als Schuldeingeständnis gewertet wird.</p>
+        <div class="info-box info-box-green mt-16">
+          <i class="fa fa-circle-check"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Gilt ab dem Moment der Festnahme.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-user-tie"></i></div>
+        <h4>Recht auf Anwalt</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Jeder Angeklagte hat das Recht auf rechtlichen Beistand. Kann kein Anwalt finanziert werden, wird ein Pflichtverteidiger vom Ministerium gestellt.</p>
+        <div class="info-box info-box-green mt-16">
+          <i class="fa fa-circle-check"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Pflichtverteidiger kostenlos für Bedürftige.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-eye"></i></div>
+        <h4>Akteneinsicht</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Der Angeklagte und sein Anwalt haben das Recht, alle Beweise und Akten einzusehen, die gegen ihn verwendet werden sollen.</p>
+        <div class="info-box info-box-green mt-16">
+          <i class="fa fa-circle-check"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Muss vor der Verhandlung gewährt werden.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-rotate-left"></i></div>
+        <h4>Recht auf Berufung</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Gegen jedes Urteil kann Berufung eingelegt werden. Das Verfahren wird dann von einem anderen Richter neu bewertet.</p>
+        <div class="info-box info-box-gold mt-16">
+          <i class="fa fa-clock"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Frist: 24 Stunden nach Urteilsverkündung.</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-person-rays"></i></div>
+        <h4>Unschuldsvermutung</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Jeder Angeklagte gilt als unschuldig, bis das Gegenteil zweifelsfrei bewiesen wurde. Die Beweislast liegt bei der Staatsanwaltschaft.</p>
+        <div class="info-box info-box-green mt-16">
+          <i class="fa fa-circle-check"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Grundsatz: „in dubio pro reo"</p></div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-icon"><i class="fa fa-comments"></i></div>
+        <h4>Öffentlichkeit des Verfahrens</h4>
+        <p style="font-size:.875rem;margin-top:10px;">Gerichtsverfahren sind grundsätzlich öffentlich. Zuhörer dürfen anwesend sein, sofern sie die Ordnung nicht stören.</p>
+        <div class="info-box info-box-blue mt-16">
+          <i class="fa fa-circle-info"></i>
+          <div class="info-box-content"><p style="font-size:.8rem;">Ausnahmen bei Jugendverfahren möglich.</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ========== BEISPIELVERFAHREN ========== -->
+<section class="section">
+  <div class="container">
+    <div class="section-header">
+      <div class="label">Praxisbeispiel</div>
+      <h2>Beispielverfahren: Fahrzeugdiebstahl</h2>
+      <div class="divider-gold"></div>
+      <p>Ein fiktives Verfahren zeigt, wie ein typischer Gerichtsprozess in San Andreas abläuft.</p>
+    </div>
+
+    <div class="grid-2" style="gap:32px;align-items:start;">
+      <div>
+        <div class="info-box info-box-blue mb-24">
+          <i class="fa fa-folder-open"></i>
+          <div class="info-box-content">
+            <h5>Akte Nr. SA-2026-0047</h5>
+            <p>Staatsanwaltschaft ./. Marcus A. — Fahrzeugdiebstahl gem. §204 StGB</p>
+          </div>
+        </div>
+
+        <div style="background:var(--white);border-radius:var(--radius-lg);border:1px solid var(--gray);overflow:hidden;">
+          <div style="background:var(--primary);padding:16px 24px;">
+            <h4 style="color:var(--white);font-size:1rem;">Verfahrensprotokoll</h4>
+          </div>
+          <div style="padding:24px;display:flex;flex-direction:column;gap:14px;">
+            <div style="display:flex;gap:16px;">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:00 Uhr</div>
+              <div style="font-size:.875rem;">Richter R. Müller eröffnet die Sitzung. Anwesenheit aller Parteien wird festgestellt.</div>
+            </div>
+            <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--gray);">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:05 Uhr</div>
+              <div style="font-size:.875rem;">StA Hoffmann verliest die Anklageschrift. Marcus A. wird beschuldigt, am 12.05.2026 ein Fahrzeug in der Grove Street entwendet zu haben.</div>
+            </div>
+            <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--gray);">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:10 Uhr</div>
+              <div style="font-size:.875rem;">Angeklagter verweigert Aussage. Verteidigerin RA Klein erklärt, ihr Mandant bestreite die Tat.</div>
+            </div>
+            <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--gray);">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:15 Uhr</div>
+              <div style="font-size:.875rem;">Beweisaufnahme: Kameraaufnahmen, Zeugenaussage Officer P. Schmidt (LSPD). Fahrzeug wurde in Besitz des Angeklagten gefunden.</div>
+            </div>
+            <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--gray);">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:22 Uhr</div>
+              <div style="font-size:.875rem;">Plädoyers: StA fordert 20 Min. Haft + $5.000. RA Klein plädiert auf Strafaussetzung (Ersttäter, kooperativ).</div>
+            </div>
+            <div style="display:flex;gap:16px;padding-top:14px;border-top:1px solid var(--gray);background:rgba(200,168,75,.05);padding-bottom:0;margin:0 -24px;padding-left:24px;padding-right:24px;padding-bottom:14px;">
+              <div style="font-size:.78rem;font-weight:700;color:var(--gold);min-width:70px;padding-top:2px;">09:28 Uhr</div>
+              <div style="font-size:.875rem;"><strong>Urteil:</strong> Schuldig gem. §204 StGB. Strafmildernd: Ersttäter. <strong>Urteil: 12 Min. Haft + $3.000 Geldstrafe.</strong> Bewährung abgelehnt aufgrund Beweislage.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div style="display:flex;flex-direction:column;gap:20px;">
+        <div style="background:var(--white);border-radius:var(--radius-lg);padding:24px;border:1px solid var(--gray);">
+          <h4 style="margin-bottom:16px;"><i class="fa fa-users" style="color:var(--gold);margin-right:8px;"></i>Beteiligte Personen</h4>
+          <div style="display:flex;flex-direction:column;gap:12px;">
+            <div style="display:flex;align-items:center;gap:14px;padding:10px;background:var(--gray-light);border-radius:var(--radius);">
+              <div style="width:36px;height:36px;background:var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--primary);font-weight:800;">R</div>
+              <div><div style="font-weight:600;font-size:.875rem;">Richter R. Müller</div><div style="font-size:.78rem;color:var(--text-light);">Vorsitzender Richter</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px;background:var(--gray-light);border-radius:var(--radius);">
+              <div style="width:36px;height:36px;background:var(--primary);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--gold);font-weight:800;">S</div>
+              <div><div style="font-weight:600;font-size:.875rem;">StA K. Hoffmann</div><div style="font-size:.78rem;color:var(--text-light);">Staatsanwalt (Ankläger)</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px;background:var(--gray-light);border-radius:var(--radius);">
+              <div style="width:36px;height:36px;background:var(--primary-light);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--white);font-weight:800;">V</div>
+              <div><div style="font-weight:600;font-size:.875rem;">RA S. Klein</div><div style="font-size:.78rem;color:var(--text-light);">Rechtsanwältin (Verteidigung)</div></div>
+            </div>
+            <div style="display:flex;align-items:center;gap:14px;padding:10px;background:var(--gray-light);border-radius:var(--radius);">
+              <div style="width:36px;height:36px;background:var(--error);border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:.85rem;color:var(--white);font-weight:800;">A</div>
+              <div><div style="font-weight:600;font-size:.875rem;">Marcus A.</div><div style="font-size:.78rem;color:var(--text-light);">Angeklagter</div></div>
+            </div>
+          </div>
+        </div>
+
+        <div class="info-box info-box-gold">
+          <i class="fa fa-scale-balanced"></i>
+          <div class="info-box-content">
+            <h5>Lernpunkt dieses Verfahrens</h5>
+            <p style="font-size:.875rem;">Strafmildernde Umstände (Ersttäter) wurden berücksichtigt. Das Schweigen des Angeklagten wurde nicht gegen ihn gewertet. Die Videobeweise waren ausschlaggebend.</p>
+          </div>
+        </div>
+
+        <div class="info-box info-box-blue">
+          <i class="fa fa-rotate-left"></i>
+          <div class="info-box-content">
+            <h5>Berufung möglich</h5>
+            <p style="font-size:.875rem;">Marcus A. hat 24 Stunden Zeit, über seinen Anwalt Berufung beim Landgericht einzulegen.</p>
+          </div>
+        </div>
+
+        <a href="buerger-service.html#anwalt" class="btn btn-primary btn-full">
+          <i class="fa fa-user-tie"></i> Anwalt anfordern
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="footer-logo">
+          <div class="footer-logo-icon">⚖</div>
+          <div class="footer-logo-text">
+            <span class="footer-logo-title">Justizministerium</span>
+            <span class="footer-logo-sub">Staat San Andreas</span>
+          </div>
+        </div>
+        <p class="footer-desc">Die oberste Justizbehörde des Staates San Andreas.</p>
+        <div class="social-links">
+          <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="social-link"><i class="fab fa-discord"></i></a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <div class="footer-links">
+          <a href="index.html">Startseite</a>
+          <a href="ueber-uns.html">Über uns</a>
+          <a href="gesetze.html">Gesetze</a>
+          <a href="gerichtssystem.html">Gerichtssystem</a>
+          <a href="bewerbungen.html">Bewerbungen</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Gerichtssystem</h4>
+        <div class="footer-links">
+          <a href="gerichtssystem.html#ablauf">Verfahrensablauf</a>
+          <a href="gerichtssystem.html#rechte">Bürgerrechte</a>
+          <a href="gerichtssystem.html#beispiel">Beispielverfahren</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <div class="footer-links">
+          <a href="kontakt.html">Ansprechpartner</a>
+          <a href="https://discord.gg/ejQ8KypUR3" target="_blank">Discord Server</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>Justizministerium San Andreas</span> · GTA V / FiveM Roleplay</p>
+    </div>
+  </div>
+</footer>
+
+<div class="scroll-top" id="scrollTop"><i class="fa fa-arrow-up"></i></div>
+<script src="js/main.js"></script>
+</body>
+</html>
