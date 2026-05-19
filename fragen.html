@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ – Häufige Fragen – Justizministerium Berlin</title>
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <style>
+    .faq-category { margin-bottom: 3rem; }
+    .faq-category-title {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 1rem 1.5rem;
+      background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+      border-radius: 10px 10px 0 0;
+      margin-bottom: 0;
+    }
+    .faq-category-title .cat-icon {
+      width: 42px; height: 42px;
+      background: rgba(200,168,75,0.2);
+      border: 1px solid var(--gold);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gold); font-size: 1.1rem; flex-shrink: 0;
+    }
+    .faq-category-title h3 { color: #fff; margin: 0; font-size: 1.1rem; }
+    .faq-category-title p  { color: rgba(255,255,255,.6); margin: 0; font-size: .8rem; }
+    .faq-list {
+      border: 1px solid var(--border);
+      border-top: none;
+      border-radius: 0 0 10px 10px;
+      overflow: hidden;
+    }
+    .faq-item { border-bottom: 1px solid var(--border); }
+    .faq-item:last-child { border-bottom: none; }
+    .faq-q {
+      width: 100%; background: var(--surface); border: none;
+      padding: 1.1rem 1.5rem;
+      display: flex; align-items: center; gap: 12px;
+      cursor: pointer; text-align: left;
+      font-size: .95rem; font-weight: 600; color: var(--text);
+      transition: background .2s;
+    }
+    .faq-q:hover { background: rgba(200,168,75,0.07); }
+    .faq-q .q-num {
+      min-width: 28px; height: 28px;
+      background: rgba(200,168,75,0.15);
+      border: 1px solid rgba(200,168,75,0.4);
+      border-radius: 6px;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .75rem; color: var(--gold); font-weight: 700;
+    }
+    .faq-q .q-arrow { margin-left: auto; color: var(--gold); transition: transform .3s; flex-shrink:0; }
+    .faq-q.open .q-arrow { transform: rotate(180deg); }
+    .faq-a {
+      display: none;
+      padding: 1rem 1.5rem 1.5rem 3.5rem;
+      background: rgba(10,30,53,0.4);
+      font-size: .9rem; color: var(--text-muted); line-height: 1.8;
+    }
+    .faq-a.open { display: block; }
+    .faq-a ul, .faq-a ol { padding-left: 1.5rem; margin: .5rem 0; }
+    .faq-a li { margin-bottom: .3rem; }
+    .faq-a strong { color: var(--gold); }
+    .faq-a a { color: var(--gold); text-decoration: underline; }
+    .faq-a .tip {
+      background: rgba(200,168,75,0.1);
+      border-left: 3px solid var(--gold);
+      padding: .7rem 1rem;
+      border-radius: 0 6px 6px 0;
+      margin-top: .8rem;
+      font-size: .85rem;
+    }
+    .faq-search-box {
+      position: relative; max-width: 600px; margin: 0 auto 3rem;
+    }
+    .faq-search-box input {
+      width: 100%; padding: 1rem 1rem 1rem 3rem;
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; color: var(--text); font-size: 1rem;
+      outline: none; transition: border .2s;
+    }
+    .faq-search-box input:focus { border-color: var(--gold); }
+    .faq-search-box .search-icon {
+      position: absolute; left: 1rem; top: 50%; transform: translateY(-50%);
+      color: var(--gold);
+    }
+    .faq-stats {
+      display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;
+      margin-bottom: 2.5rem;
+    }
+    .faq-stat {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: 10px; padding: .8rem 1.5rem;
+      text-align: center; min-width: 120px;
+    }
+    .faq-stat .num { font-size: 1.6rem; font-weight: 800; color: var(--gold); }
+    .faq-stat .lbl { font-size: .75rem; color: var(--text-muted); }
+    .no-results { display: none; text-align: center; padding: 2rem; color: var(--text-muted); }
+  </style>
+</head>
+<body>
+
+<!-- ========== HEADER ========== -->
+<header class="header" id="header">
+  <div class="header-inner">
+    <a href="index.html" class="logo">
+      <img src="logo.png" alt="Justizministerium Berlin" style="height:52px;width:52px;object-fit:contain;border-radius:6px;">
+      <div class="logo-text">
+        <span class="logo-title">Justizministerium</span>
+        <span class="logo-sub">Staat Berlin</span>
+      </div>
+    </a>
+    <nav class="nav">
+      <a href="index.html"            class="nav-link"><i class="fa fa-house"></i> Startseite</a>
+      <a href="ueber-uns.html"        class="nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+      <a href="gesetze.html"          class="nav-link"><i class="fa fa-book"></i> Gesetze</a>
+      <a href="gerichtssystem.html"   class="nav-link"><i class="fa fa-gavel"></i> Gericht</a>
+      <a href="bewerbungen.html"      class="nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+      <a href="buerger-service.html"  class="nav-link"><i class="fa fa-people-group"></i> Bürger</a>
+      <a href="fragen.html"           class="nav-link active"><i class="fa fa-circle-question"></i> FAQ</a>
+      <a href="kontakt.html"          class="nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+    </nav>
+    <div class="header-actions">
+      <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord">
+        <i class="fab fa-discord"></i><span class="btn-text">Discord</span>
+      </a>
+      <div class="hamburger" id="hamburger"><span></span><span></span><span></span></div>
+    </div>
+  </div>
+</header>
+<nav class="mobile-nav" id="mobileNav">
+  <a href="index.html"           class="mobile-nav-link"><i class="fa fa-house"></i> Startseite</a>
+  <a href="ueber-uns.html"       class="mobile-nav-link"><i class="fa fa-landmark"></i> Über uns</a>
+  <a href="gesetze.html"         class="mobile-nav-link"><i class="fa fa-book"></i> Gesetze</a>
+  <a href="gerichtssystem.html"  class="mobile-nav-link"><i class="fa fa-gavel"></i> Gerichtssystem</a>
+  <a href="bewerbungen.html"     class="mobile-nav-link"><i class="fa fa-file-pen"></i> Bewerbungen</a>
+  <a href="buerger-service.html" class="mobile-nav-link"><i class="fa fa-people-group"></i> Bürger Service</a>
+  <a href="fragen.html"          class="mobile-nav-link active"><i class="fa fa-circle-question"></i> FAQ</a>
+  <a href="kontakt.html"         class="mobile-nav-link"><i class="fa fa-envelope"></i> Kontakt</a>
+  <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn-discord mt-8"><i class="fab fa-discord"></i> Discord</a>
+</nav>
+
+<!-- ========== PAGE HEADER ========== -->
+<section class="page-header">
+  <div class="container">
+    <h1 class="page-header-title">Häufige Fragen</h1>
+    <p class="page-header-sub">Antworten auf die wichtigsten Fragen rund um das Justizministerium Berlin</p>
+  </div>
+</section>
+
+<!-- ========== INHALT ========== -->
+<section class="section">
+  <div class="container">
+
+    <!-- Suchfeld -->
+    <div class="faq-search-box">
+      <i class="fa fa-magnifying-glass search-icon"></i>
+      <input type="text" id="faqSearch" placeholder="Frage suchen, z.B. „Anwalt", „Verhaftung", „Bewerbung"…" oninput="filterFaq(this.value)">
+    </div>
+
+    <!-- Statistiken -->
+    <div class="faq-stats">
+      <div class="faq-stat"><div class="num">40+</div><div class="lbl">Fragen beantwortet</div></div>
+      <div class="faq-stat"><div class="num">6</div><div class="lbl">Themenbereiche</div></div>
+      <div class="faq-stat"><div class="num">24h</div><div class="lbl">Antwortzeit Discord</div></div>
+    </div>
+
+    <div id="noResults" class="no-results">
+      <i class="fa fa-circle-xmark" style="font-size:2rem;color:var(--gold);display:block;margin-bottom:1rem;"></i>
+      Keine Treffer gefunden. Frag uns direkt auf <a href="https://discord.gg/ejQ8KypUR3" target="_blank" style="color:var(--gold);">Discord</a>!
+    </div>
+
+    <!-- ===== KATEGORIE: FESTNAHME & RECHTE ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-handcuffs"></i></div>
+        <div><h3>Festnahme &amp; Bürgerrechte</h3><p>Was gilt bei einer Verhaftung?</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Was sind meine Rechte bei einer Festnahme?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Bei einer Festnahme hast du folgende unveräußerliche Rechte:
+            <ul>
+              <li><strong>Schweigerecht</strong> – Du musst keine Aussage machen. Kein Beamter darf dich dazu zwingen.</li>
+              <li><strong>Recht auf einen Anwalt</strong> – Verlange ihn aktiv! Kein Verhör ohne Anwalt, wenn du es wünschst.</li>
+              <li><strong>Recht auf Information</strong> – Du musst über den Grund deiner Festnahme informiert werden.</li>
+              <li><strong>48-Stunden-Regel</strong> – Ohne Anklage oder Haftbefehl musst du spätestens nach 48h entlassen werden.</li>
+              <li><strong>Unschuldsvermutung</strong> – Du giltst bis zur Verurteilung als unschuldig.</li>
+            </ul>
+            <div class="tip">💡 Tipp: Bleib ruhig und kooperativ. Nenne deinen Namen, verlange dann sofort einen Anwalt.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Wie lange darf ich ohne Anklage festgehalten werden?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            <strong>Maximal 48 Stunden</strong> ohne Haftbefehl oder Anklage. Danach muss entweder:
+            <ul>
+              <li>ein Haftbefehl durch einen Richter ausgestellt werden, oder</li>
+              <li>du wirst freigelassen.</li>
+            </ul>
+            Wird die Frist überschritten, liegt eine <strong>rechtswidrige Freiheitsberaubung</strong> vor, die du beim Justizministerium anzeigen kannst.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Darf die Polizei mich ohne Durchsuchungsbefehl durchsuchen?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Grundsätzlich <strong>nein</strong> – Durchsuchungen von Personen und Räumen benötigen einen richterlichen Beschluss.
+            Ausnahmen:
+            <ul>
+              <li>Bei <strong>Gefahr im Verzug</strong> (z.B. Verdacht auf Waffe / Drogenhandel auf frischer Tat) darf die Polizei auch ohne Beschluss handeln, muss ihn aber unverzüglich nachholen.</li>
+              <li>Bei einer Identitätsfeststellung nach § 52 StPO dürfen äußere Taschen und offen sichtbare Gegenstände geprüft werden.</li>
+            </ul>
+            <div class="tip">💡 Widerspreche einer unberechtigten Durchsuchung ruhig verbal – leiste aber keinen körperlichen Widerstand.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">4</span>
+            Was ist Notwehr und wann darf ich sie anwenden?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Notwehr (§ 6 StGB) ist die Abwehr eines <strong>gegenwärtigen, rechtswidrigen Angriffs</strong> auf dich oder eine andere Person.
+            Wichtige Regeln:
+            <ul>
+              <li>Die Gegenwehr muss <strong>erforderlich und verhältnismäßig</strong> sein – du darfst nicht mehr tun als nötig.</li>
+              <li>Notwehr ist auch zum Schutz <strong>fremder Personen</strong> erlaubt (Nothilfe).</li>
+              <li>Gegen Polizeimaßnahmen gilt <strong>keine Notwehr</strong>, auch wenn du sie für ungerechtfertigt hältst – klage stattdessen vor Gericht.</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">5</span>
+            Kann ich gegen eine Verhaftung vorgehen?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Ja! Du hast folgende Möglichkeiten:
+            <ul>
+              <li><strong>Haftprüfungsantrag</strong> – Du kannst jederzeit beim Gericht die Überprüfung des Haftbefehls beantragen. Das Gericht entscheidet innerhalb von 24 Stunden.</li>
+              <li><strong>Beschwerde beim Justizministerium</strong> – Über das <a href="buerger-service.html#beschwerde">Beschwerdeformular</a> kannst du eine offizielle Beschwerde einreichen.</li>
+              <li><strong>Anwalt kontaktieren</strong> – Dein Anwalt kann sofort Beschwerde einlegen.</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== KATEGORIE: ANWALT ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-user-tie"></i></div>
+        <div><h3>Anwalt &amp; Rechtsberatung</h3><p>Rechtlichen Beistand erhalten</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Wie bekomme ich einen kostenlosen Anwalt (Pflichtverteidiger)?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Jeder Bürger hat das Recht auf einen Pflichtverteidiger – unabhängig seiner finanziellen Lage.
+            <ul>
+              <li>Stelle die Anfrage über das <a href="buerger-service.html#anwalt">Anwalt-Formular</a> auf dieser Website.</li>
+              <li>Oder schreibe direkt im Discord-Kanal <code>#bürger-hilfe</code>.</li>
+              <li>Bei einer Festnahme: Verlange <strong>direkt bei der Polizei</strong> einen Pflichtverteidiger.</li>
+            </ul>
+            <div class="tip">💡 Sage direkt bei der Festnahme: „Ich bestehe auf einem Anwalt. Ich sage nichts, bevor ich mit ihm gesprochen habe."</div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Wie lange dauert es bis mir ein Anwalt zugewiesen wird?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            <ul>
+              <li><strong>Normal:</strong> Innerhalb von 24 Stunden über Discord.</li>
+              <li><strong>Dringend (aktives Verfahren):</strong> Wir bemühen uns um eine Rückmeldung innerhalb von wenigen Stunden.</li>
+              <li><strong>Sofort (Verhör läuft):</strong> Schreibe direkt im Discord-Kanal <code>#bürger-hilfe</code> mit dem Vermerk „SOFORT – Verhör läuft".</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Sind Gespräche mit meinem Anwalt vertraulich?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            <strong>Ja, absolut.</strong> Das Mandantengespräch unterliegt der absoluten Verschwiegenheitspflicht. Die Polizei und Staatsanwaltschaft dürfen diese Gespräche nicht abhören oder als Beweis verwerten. Verstöße hiergegen sind strafbar (§ 45 StPO).
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">4</span>
+            Kann ich meinen Anwalt während eines laufenden Verfahrens wechseln?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Ja. Du hast das Recht, deinen Verteidiger jederzeit zu wechseln. Stelle eine neue Anfrage über das Formular und informiere das Gericht sowie die Staatsanwaltschaft über den Wechsel.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== KATEGORIE: GERICHTSVERFAHREN ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-gavel"></i></div>
+        <div><h3>Gerichtsverfahren</h3><p>Ablauf und Ablauf von Prozessen</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Wie läuft ein Gerichtsverfahren ab?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Ein Gerichtsverfahren durchläuft diese Schritte:
+            <ol>
+              <li><strong>Anklage</strong> – Die Staatsanwaltschaft erhebt Anklage beim Gericht.</li>
+              <li><strong>Ladung</strong> – Alle Beteiligten werden min. 48h vorher geladen.</li>
+              <li><strong>Anklageverlesung</strong> – Der Richter liest die Anklage vor.</li>
+              <li><strong>Einlassung</strong> – Der Angeklagte kann sich äußern oder schweigen.</li>
+              <li><strong>Beweisaufnahme</strong> – Zeugen werden gehört, Beweise vorgelegt.</li>
+              <li><strong>Plädoyers</strong> – Staatsanwalt, dann Verteidiger halten ihr Schlussplädoyer.</li>
+              <li><strong>Letztes Wort</strong> – Der Angeklagte spricht zuletzt.</li>
+              <li><strong>Urteil</strong> – Der Richter verkündet das Urteil.</li>
+            </ol>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Wie beantrage ich eine Berufung gegen ein Urteil?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Berufungen müssen <strong>innerhalb von 24 Stunden</strong> nach Urteilsverkündung eingereicht werden.
+            <ul>
+              <li>Nutze das <a href="buerger-service.html#beschwerde">Beschwerdeformular</a> auf dieser Website.</li>
+              <li>Oder den Discord-Kanal <code>#anträge</code>.</li>
+            </ul>
+            Das Berufungsgericht überprüft sowohl Tat- als auch Rechtsfragen vollständig neu.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Kann ich als Zuschauer bei einem Gerichtsverfahren dabei sein?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            <strong>Ja</strong>, Gerichtsverhandlungen sind grundsätzlich öffentlich (§ 60 StPO). Du darfst als Zuschauer anwesend sein, solange du die Ordnung des Gerichts nicht störst. Infos zu anstehenden Verfahren findest du im Discord unter <code>#gerichtskalender</code>. Der Richter kann die Öffentlichkeit in Ausnahmefällen ausschließen.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">4</span>
+            Was bedeutet „in dubio pro reo"?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Das lateinische Prinzip bedeutet: <strong>„Im Zweifel für den Angeklagten."</strong> Wenn das Gericht nach der Beweisaufnahme nicht mit hinreichender Sicherheit von der Schuld überzeugt ist, muss es freisprechen. Die Staatsanwaltschaft trägt die volle Beweislast.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">5</span>
+            Was passiert wenn ich nicht zur Gerichtsverhandlung erscheine?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Wenn du als <strong>Angeklagter</strong> ohne Entschuldigung nicht erscheinst, kann das Gericht:
+            <ul>
+              <li>Einen Haftbefehl gegen dich erlassen.</li>
+              <li>Unter strengen Voraussetzungen in deiner Abwesenheit verhandeln.</li>
+            </ul>
+            Als <strong>Zeuge</strong> kannst du zur Vernehmung vorgeführt werden und ein Ordnungsgeld erhalten.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== KATEGORIE: BEWERBUNGEN ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-file-pen"></i></div>
+        <div><h3>Bewerbungen &amp; Karriere</h3><p>Teil des Justizministeriums werden</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Wie lange dauert die Bearbeitung meiner Bewerbung?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Bewerbungen werden in der Regel innerhalb von <strong>24 bis 48 Stunden</strong> geprüft. Du erhältst danach eine Rückmeldung über Discord. Stelle sicher, dass du unserem Discord-Server beigetreten bist und Direktnachrichten aktiviert hast.
+            <div class="tip">💡 Tipp: Prüfe deinen Discord-Posteingang und Spam-Ordner regelmäßig nach der Bewerbung.</div>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Welche Voraussetzungen brauche ich für eine Bewerbung als Richter?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Für die Position als Richter benötigst du:
+            <ul>
+              <li>Straffreie Vergangenheit auf dem Server</li>
+              <li>Mindestens 3 Wochen aktive Spielzeit</li>
+              <li>Solide Kenntnisse im Strafrecht (StGB Berlin)</li>
+              <li>Eine Empfehlung eines Ministeriumsmitglieds</li>
+              <li>Eine bestandene schriftliche Wissens-Prüfung</li>
+              <li>Ein erfolgreiches Vorstellungsgespräch</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Ich möchte Anwalt werden – was muss ich tun?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Der Weg zum Rechtsanwalt:
+            <ol>
+              <li>Lies die Anforderungen auf der <a href="bewerbungen.html">Bewerbungsseite</a>.</li>
+              <li>Fülle das Bewerbungsformular vollständig aus.</li>
+              <li>Absolviere den Einführungskurs der Anwaltskammer im Discord.</li>
+              <li>Nimm an deiner Vereidigung teil und erhalte deine offizielle Zulassung.</li>
+            </ol>
+            Der Anwaltsberuf ist die ideale Einstiegsposition – Vorerfahrung ist nicht erforderlich.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">4</span>
+            Kann ich mich für mehrere Positionen gleichzeitig bewerben?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Nein. Bitte bewirb dich nur für <strong>eine Position</strong> gleichzeitig. Mehrfachbewerbungen werden abgelehnt. Entscheide dich für die Stelle, die am besten zu deiner Erfahrung passt.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">5</span>
+            Meine Bewerbung wurde abgelehnt – kann ich es erneut versuchen?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Ja. Nach einer Ablehnung kannst du dich erneut bewerben, wenn du:
+            <ul>
+              <li>Mindestens <strong>2 Wochen</strong> gewartet hast.</li>
+              <li>Die in der Ablehnung genannten Punkte verbessert hast.</li>
+            </ul>
+            Bitte frage bei Ablehnung höflich nach konkretem Feedback im Discord.
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== KATEGORIE: GESETZE ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-book"></i></div>
+        <div><h3>Gesetze &amp; Regelwerk</h3><p>Was gilt in Berlin?</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Wo finde ich alle gültigen Gesetze?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Alle Gesetze des Staates Berlin sind auf der <a href="gesetze.html">Gesetzesseite</a> dieser Website veröffentlicht. Du findest dort: StGB, StPO, OWiG (Bußgeldkatalog), JusG, WaffG und BtMG.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Schützt mich Unwissenheit vor Strafe?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            <strong>Nein.</strong> Der Grundsatz „Unwissenheit schützt nicht vor Strafe" gilt auch in Berlin. Jeder Bürger ist verpflichtet, sich über die geltenden Gesetze zu informieren. Die Gesetze sind öffentlich einsehbar – nutze sie.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Was passiert wenn ich ein Bußgeld nicht bezahle?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Wird ein Bußgeld nicht innerhalb der gesetzten Frist bezahlt, kommt ein <strong>Aufschlag von 50 %</strong> (§ 82 OWiG) hinzu. Bei weiterer Verweigerung kann die Staatsanwaltschaft ein Vollstreckungsverfahren einleiten und Gegenstände pfänden lassen.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">4</span>
+            Darf ich legal eine Waffe tragen?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Schusswaffen nur mit gültigem <strong>Waffenschein</strong> (§ 1 WaffG). Ohne Genehmigung erlaubt sind Messer bis 12 cm Klingenlänge und ziviles Pfefferspray, wenn du volljährig bist und sie offen trägst. Das Mitführen in öffentliche Gebäude (Gericht, Behörden, Schulen) ist immer verboten.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">5</span>
+            Was passiert bei einer Drogenordnungswidrigkeit mit Cannabis?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Cannabis fällt unter <strong>BtMG Klasse A</strong>:
+            <ul>
+              <li>Besitz zum Eigenkonsum bis 15g: <strong>500 € Bußgeld</strong></li>
+              <li>Besitz über 15g mit Handelsabsicht: 6 Monate bis 2 Jahre Freiheitsstrafe</li>
+              <li>Handel und Verkauf: 1–5 Jahre Freiheitsstrafe</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- ===== KATEGORIE: ALLGEMEIN ===== -->
+    <div class="faq-category" data-cat>
+      <div class="faq-category-title">
+        <div class="cat-icon"><i class="fa fa-circle-info"></i></div>
+        <div><h3>Allgemeine Fragen</h3><p>Sonstiges rund um das Ministerium</p></div>
+      </div>
+      <div class="faq-list">
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">1</span>
+            Wie kann ich eine Beschwerde gegen einen Justizmitarbeiter einreichen?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Reiche deine Beschwerde über das <a href="buerger-service.html#beschwerde">Beschwerdeformular</a> ein oder schreibe direkt im Discord-Kanal <code>#anträge</code>. Jede Beschwerde wird ernst genommen und vom Justizminister oder Chefrichter geprüft. Gib so viele Details wie möglich an (Datum, Uhrzeit, Name des Beamten, Vorgang).
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">2</span>
+            Wem gehört das Justizministerium Berlin?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Das Justizministerium Berlin gehört <strong>flaxy185</strong>. Alle Rechte an dieser Website und dem Ministerium auf dem GTA V / FiveM Roleplay Server liegen bei flaxy185.
+          </div>
+        </div>
+
+        <div class="faq-item" data-faq>
+          <button class="faq-q" onclick="toggleFaq(this)">
+            <span class="q-num">3</span>
+            Meine Frage steht hier nicht – was kann ich tun?
+            <i class="fa fa-chevron-down q-arrow"></i>
+          </button>
+          <div class="faq-a">
+            Kein Problem! Stelle deine Frage direkt auf unserem Discord:
+            <ul>
+              <li>Tritt dem Server bei: <a href="https://discord.gg/ejQ8KypUR3" target="_blank">discord.gg/ejQ8KypUR3</a></li>
+              <li>Schreibe im Kanal <code>#bürger-hilfe</code></li>
+              <li>Oder kontaktiere einen Ansprechpartner auf der <a href="kontakt.html">Kontaktseite</a></li>
+            </ul>
+            <div class="tip">💡 Wir antworten in der Regel innerhalb von 24 Stunden.</div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+
+    <!-- CTA -->
+    <div class="card text-center" style="margin-top:2rem;padding:2.5rem;">
+      <div style="font-size:2.5rem;color:var(--gold);margin-bottom:1rem;"><i class="fab fa-discord"></i></div>
+      <h3 style="margin-bottom:.5rem;">Noch offene Fragen?</h3>
+      <p style="color:var(--text-muted);margin-bottom:1.5rem;">Frag uns direkt auf Discord – schnell, unkompliziert und kostenlos.</p>
+      <a href="https://discord.gg/ejQ8KypUR3" target="_blank" class="btn btn-primary btn-lg">
+        <i class="fab fa-discord"></i> Discord beitreten
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ========== FOOTER ========== -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="footer-logo">
+          <img src="logo.png" alt="Logo" style="height:40px;width:40px;object-fit:contain;border-radius:6px;">
+          <div class="logo-text">
+            <span class="logo-title">Justizministerium</span>
+            <span class="logo-sub">Staat Berlin</span>
+          </div>
+        </div>
+        <p class="footer-desc">Das Justizministerium Berlin – für Recht, Ordnung und Gerechtigkeit.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Startseite</a></li>
+          <li><a href="ueber-uns.html">Über uns</a></li>
+          <li><a href="gesetze.html">Gesetze</a></li>
+          <li><a href="gerichtssystem.html">Gerichtssystem</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Service</h4>
+        <ul>
+          <li><a href="bewerbungen.html">Bewerbungen</a></li>
+          <li><a href="buerger-service.html">Bürger Service</a></li>
+          <li><a href="fragen.html">FAQ</a></li>
+          <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Kontakt</h4>
+        <ul>
+          <li><a href="https://discord.gg/ejQ8KypUR3" target="_blank"><i class="fab fa-discord"></i> Discord Server</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 <span>Justizministerium Berlin</span> · Eigentümer: <strong>flaxy185</strong> · GTA V / FiveM Roleplay · Alle Rechte vorbehalten</p>
+    </div>
+  </div>
+</footer>
+
+<script src="main.js"></script>
+<script>
+  function toggleFaq(btn) {
+    const answer = btn.nextElementSibling;
+    const isOpen = answer.classList.contains('open');
+    btn.classList.toggle('open', !isOpen);
+    answer.classList.toggle('open', !isOpen);
+  }
+
+  function filterFaq(query) {
+    const q = query.toLowerCase().trim();
+    let anyVisible = false;
+    document.querySelectorAll('[data-faq]').forEach(item => {
+      const text = item.textContent.toLowerCase();
+      const match = !q || text.includes(q);
+      item.style.display = match ? '' : 'none';
+      if (match) anyVisible = true;
+    });
+    document.querySelectorAll('[data-cat]').forEach(cat => {
+      const visibleItems = [...cat.querySelectorAll('[data-faq]')].some(i => i.style.display !== 'none');
+      cat.style.display = visibleItems ? '' : 'none';
+    });
+    document.getElementById('noResults').style.display = (!q || anyVisible) ? 'none' : 'block';
+  }
+</script>
+</body>
+</html>
