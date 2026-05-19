@@ -2,6 +2,33 @@
    JUSTIZMINISTERIUM – HAUPT-JAVASCRIPT
    ====================================================== */
 
+/* ========== DISCORD WEBHOOK KONFIGURATION ========== */
+const DISCORD_WEBHOOK = 'https://discord.com/api/webhooks/1506128469271117878/83qj8G9Z1p1_FwWoA2pYoQoSLZ1A2qduTszii2__NDoU_OmLMZQCZ42wWj9U7TDZvK-F';
+
+async function sendWebhook(embed) {
+  try {
+    const res = await fetch(DISCORD_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ embeds: [embed] })
+    });
+    if (!res.ok) console.warn('Webhook HTTP-Fehler:', res.status);
+  } catch (err) {
+    console.warn('Webhook konnte nicht gesendet werden:', err);
+  }
+}
+
+// Hilfsfunktion: Alle Formularwerte der Reihe nach auslesen
+function getVals(form) {
+  return [...form.querySelectorAll('input:not([type=submit]), select, textarea')]
+    .map(el => el.value.trim() || '–');
+}
+
+// Zeitstempel für Discord
+function timestamp() {
+  return new Date().toISOString();
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- HEADER SCROLL EFFEKT ---------- */
@@ -65,11 +92,35 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  /* ---------- BEWERBUNGSFORMULAR ---------- */
+  /* ========================================================
+     BEWERBUNGSFORMULAR → DISCORD WEBHOOK
+  ======================================================== */
   const appForm = document.getElementById('bewerbungsformular');
   if (appForm) {
-    appForm.addEventListener('submit', (e) => {
+    appForm.addEventListener('submit', async (e) => {
       e.preventDefault();
+      const v = getVals(appForm);
+      // v[0]=Name, v[1]=Discord, v[2]=Alter, v[3]=Spielzeit, v[4]=Position,
+      // v[5]=Motivation, v[6]=Erfahrungen, v[7]=Strafregister, v[8]=Anmerkungen
+
+      await sendWebhook({
+        title: '📋 Neue Bewerbung eingegangen',
+        color: 13150283, // Gold #c8a84b
+        timestamp: timestamp(),
+        footer: { text: 'Justizministerium Berlin · Bewerbungsportal' },
+        fields: [
+          { name: '👤 Name (IC)',             value: v[0],  inline: true  },
+          { name: '🎮 Discord-Tag',           value: v[1],  inline: true  },
+          { name: '🎂 Alter (IC)',             value: v[2],  inline: true  },
+          { name: '⏱️ Spielzeit auf Server',  value: v[3],  inline: true  },
+          { name: '💼 Angestrebte Position',  value: v[4],  inline: false },
+          { name: '✍️ Motivation',            value: v[5].substring(0,1024), inline: false },
+          { name: '📚 Erfahrungen',           value: v[6].substring(0,1024), inline: false },
+          { name: '⚖️ Strafregister',         value: v[7],  inline: true  },
+          { name: '📝 Anmerkungen',           value: v[8].substring(0,512), inline: false },
+        ]
+      });
+
       const successMsg = document.getElementById('form-success');
       successMsg?.classList.add('visible');
       appForm.reset();
@@ -78,20 +129,108 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  /* ---------- BÜRGER SERVICE FORMULARE ---------- */
-  ['anzeige-form', 'anwalt-form', 'beschwerde-form'].forEach(id => {
-    const form = document.getElementById(id);
-    if (!form) return;
-    form.addEventListener('submit', (e) => {
+  /* ========================================================
+     ANZEIGE FORMULAR → DISCORD WEBHOOK
+  ======================================================== */
+  const anzeigForm = document.getElementById('anzeige-form');
+  if (anzeigForm) {
+    anzeigForm.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const successId = id.replace('-form', '-success');
-      const successEl = document.getElementById(successId);
+      const v = getVals(anzeigForm);
+      // v[0]=Name, v[1]=Discord, v[2]=Beschuldigter, v[3]=Tatzeit,
+      // v[4]=Tatort, v[5]=Beschreibung, v[6]=Zeugen, v[7]=Beweise
+
+      await sendWebhook({
+        title: '🚨 Neue Strafanzeige eingegangen',
+        color: 16711680, // Rot
+        timestamp: timestamp(),
+        footer: { text: 'Justizministerium Berlin · Bürger Service' },
+        fields: [
+          { name: '👤 Anzeigeerstatter (IC)', value: v[0], inline: true  },
+          { name: '🎮 Discord-Tag',           value: v[1], inline: true  },
+          { name: '🔍 Beschuldigte Person',   value: v[2], inline: true  },
+          { name: '🕐 Tatzeit',               value: v[3], inline: true  },
+          { name: '📍 Tatort',                value: v[4], inline: false },
+          { name: '📄 Tathergang',            value: v[5].substring(0,1024), inline: false },
+          { name: '👥 Zeugen',                value: v[6], inline: true  },
+          { name: '🖼️ Beweise / Links',       value: v[7], inline: true  },
+        ]
+      });
+
+      const successEl = document.getElementById('anzeige-success');
       successEl?.classList.add('visible');
-      form.reset();
-      form.style.display = 'none';
+      anzeigForm.reset();
+      anzeigForm.style.display = 'none';
       successEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     });
-  });
+  }
+
+  /* ========================================================
+     ANWALT FORMULAR → DISCORD WEBHOOK
+  ======================================================== */
+  const anwaltForm = document.getElementById('anwalt-form');
+  if (anwaltForm) {
+    anwaltForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const v = getVals(anwaltForm);
+      // v[0]=Name, v[1]=Discord, v[2]=Art des Beistands,
+      // v[3]=Beschreibung, v[4]=Dringlichkeit
+
+      await sendWebhook({
+        title: '⚖️ Anwalt-Anfrage eingegangen',
+        color: 43520, // Grün
+        timestamp: timestamp(),
+        footer: { text: 'Justizministerium Berlin · Bürger Service' },
+        fields: [
+          { name: '👤 Antragsteller (IC)', value: v[0], inline: true  },
+          { name: '🎮 Discord-Tag',        value: v[1], inline: true  },
+          { name: '📋 Art des Beistands',  value: v[2], inline: false },
+          { name: '⚡ Dringlichkeit',       value: v[4], inline: true  },
+          { name: '📝 Situationsbeschreibung', value: v[3].substring(0,1024), inline: false },
+        ]
+      });
+
+      const successEl = document.getElementById('anwalt-success');
+      successEl?.classList.add('visible');
+      anwaltForm.reset();
+      anwaltForm.style.display = 'none';
+      successEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
+
+  /* ========================================================
+     BESCHWERDE FORMULAR → DISCORD WEBHOOK
+  ======================================================== */
+  const beschwerdeForm = document.getElementById('beschwerde-form');
+  if (beschwerdeForm) {
+    beschwerdeForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const v = getVals(beschwerdeForm);
+      // v[0]=Name, v[1]=Discord, v[2]=Art der Beschwerde,
+      // v[3]=Aktenzeichen, v[4]=Beschreibung, v[5]=Beweise
+
+      await sendWebhook({
+        title: '📣 Beschwerde eingegangen',
+        color: 16744448, // Orange
+        timestamp: timestamp(),
+        footer: { text: 'Justizministerium Berlin · Bürger Service' },
+        fields: [
+          { name: '👤 Beschwerdeführer (IC)', value: v[0], inline: true  },
+          { name: '🎮 Discord-Tag',           value: v[1], inline: true  },
+          { name: '📋 Art der Beschwerde',    value: v[2], inline: false },
+          { name: '🗂️ Aktenzeichen',          value: v[3], inline: true  },
+          { name: '📄 Beschreibung',          value: v[4].substring(0,1024), inline: false },
+          { name: '🖼️ Beweise / Links',       value: v[5], inline: false },
+        ]
+      });
+
+      const successEl = document.getElementById('beschwerde-success');
+      successEl?.classList.add('visible');
+      beschwerdeForm.reset();
+      beschwerdeForm.style.display = 'none';
+      successEl?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    });
+  }
 
   /* ---------- ZAHL-ANIMATION (HERO STATS) ---------- */
   const counters = document.querySelectorAll('[data-count]');
